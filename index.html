@@ -634,7 +634,7 @@ body.urdu-mode .btn i.fa-arrow-right {
 
 /* Announcement */
 .announcement {
-    position: fixed; top: 92px; left: 0; right: 0;
+    position: fixed; top: 80px; left: 0; right: 0;
     z-index: 999;
     background: var(--forest-deep);
     color: var(--ivory);
@@ -645,7 +645,7 @@ body.urdu-mode .btn i.fa-arrow-right {
 }
 .announcement.show { opacity: 1; }
 .announcement-track {
-    display: flex; gap: 60px;
+    display: flex; gap: 60px; top: 66px;
     animation: marquee 40s linear infinite;
     white-space: nowrap;
     font-family: var(--font-body);
@@ -1942,6 +1942,134 @@ body.urdu-mode .contact-info-item p {
     body.urdu-mode .hero h1 {
         font-size: 1.7rem;
     }
+}
+/* =========================================================
+   CRITICAL FIX: Announcement strip MUST touch the header
+   No gap, no overlap — perfectly seamless
+   ========================================================= */
+
+/* Base header state — measure the height and match it */
+.header {
+    min-height: 80px;
+}
+
+/* Announcement strip — sits directly below header */
+.announcement {
+    top: 80px !important;   /* Match header height */
+    height: 38px !important;
+    z-index: 999;
+}
+
+/* When header scrolls (becomes smaller), strip follows */
+.header.scrolled + .announcement,
+.header.scrolled ~ .announcement {
+    top: 68px !important;   /* Scrolled header height */
+}
+
+/* Hero starts BELOW the announcement strip */
+.hero {
+    padding-top: calc(80px + 38px) !important;   /* Header + Strip */
+}
+
+html[lang="ur"] .hero,
+body.urdu-mode .hero {
+    padding-top: calc(80px + 38px) !important;
+}
+
+/* Mobile responsive */
+@media (max-width: 992px) {
+    .header { min-height: 72px; }
+    .announcement {
+        top: 72px !important;
+        height: 34px !important;
+    }
+    .header.scrolled + .announcement,
+    .header.scrolled ~ .announcement {
+        top: 62px !important;
+    }
+    .hero {
+        padding-top: calc(72px + 34px) !important;
+    }
+    html[lang="ur"] .hero,
+    body.urdu-mode .hero {
+        padding-top: calc(72px + 34px) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .header { min-height: 66px; }
+    .announcement {
+        top: 66px !important;
+        height: 32px !important;
+    }
+    .header.scrolled + .announcement,
+    .header.scrolled ~ .announcement {
+        top: 58px !important;
+    }
+    .hero {
+        padding-top: calc(66px + 32px) !important;
+    }
+    html[lang="ur"] .hero,
+    body.urdu-mode .hero {
+        padding-top: calc(66px + 32px) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .header { min-height: 60px; }
+    .announcement {
+        top: 60px !important;
+        height: 30px !important;
+    }
+    .header.scrolled + .announcement,
+    .header.scrolled ~ .announcement {
+        top: 52px !important;
+    }
+    .hero {
+        padding-top: calc(60px + 30px) !important;
+    }
+    html[lang="ur"] .hero,
+    body.urdu-mode .hero {
+        padding-top: calc(60px + 30px) !important;
+    }
+}
+
+/* Urdu mode — strip ki height thodi barhti hai */
+html[lang="ur"] .announcement,
+body.urdu-mode .announcement {
+    height: 40px !important;
+}
+html[lang="ur"] .hero,
+body.urdu-mode .hero {
+    padding-top: calc(80px + 40px) !important;
+}
+
+@media (max-width: 992px) {
+    html[lang="ur"] .announcement,
+    body.urdu-mode .announcement {
+        height: 36px !important;
+    }
+    html[lang="ur"] .hero,
+    body.urdu-mode .hero {
+        padding-top: calc(72px + 36px) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    html[lang="ur"] .announcement,
+    body.urdu-mode .announcement {
+        height: 34px !important;
+    }
+    html[lang="ur"] .hero,
+    body.urdu-mode .hero {
+        padding-top: calc(66px + 34px) !important;
+    }
+}
+
+/* Ensure header has solid background — no transparency issues */
+.header {
+    background: rgba(250, 247, 240, 0.98) !important;
+    backdrop-filter: blur(20px) !important;
 }
 </style>
 </head>
