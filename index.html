@@ -1471,7 +1471,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 60px;
+            gap: 50px;
             flex-wrap: wrap;
         }
         .govt-logo-item {
@@ -1514,16 +1514,21 @@
             text-transform: none;
         }
 
+        @media (max-width: 992px) {
+            .govt-logos { gap: 32px; }
+            .govt-logo-item img { height: 76px; }
+        }
+
         @media (max-width: 768px) {
             .govt-section { padding: 45px 0; }
-            .govt-logos { gap: 36px; }
-            .govt-logo-item img { height: 70px; }
+            .govt-logos { gap: 28px; }
+            .govt-logo-item img { height: 66px; }
             .govt-logo-item span { font-size: 10px; }
         }
 
         @media (max-width: 480px) {
-            .govt-logos { gap: 24px; }
-            .govt-logo-item img { height: 60px; }
+            .govt-logos { gap: 20px; }
+            .govt-logo-item img { height: 56px; }
         }
 
         /* =========================================================
@@ -2041,8 +2046,8 @@
             .contact-form-box { padding: 28px 22px; }
 
             .govt-section { padding: 45px 0; }
-            .govt-logos { gap: 36px; }
-            .govt-logo-item img { height: 70px; }
+            .govt-logos { gap: 28px; }
+            .govt-logo-item img { height: 66px; }
             .govt-logo-item span { font-size: 10px; }
             
             .footer { padding: 60px 0 24px; }
@@ -2064,8 +2069,8 @@
             .display { font-size: 1.75rem; }
             .btn { padding: 13px 24px; font-size: 12px; }
             .btn-lg { padding: 15px 28px; font-size: 13px; }
-            .govt-logos { gap: 24px; }
-            .govt-logo-item img { height: 60px; }
+            .govt-logos { gap: 20px; }
+            .govt-logo-item img { height: 56px; }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -2352,14 +2357,14 @@
     </section>
 
     <!-- =========================================================
-         SPONSORED BY / GOVERNMENT SECTION — CLEAN LOGO ROW
+         SPONSORED BY / GOVERNMENT SECTION — CLEAN LOGO ROW (5 LOGOS)
          ========================================================= -->
     <section class="govt-section">
         <div class="container">
             <!-- Small heading line -->
             <div class="govt-label" data-i18n="govt_label">Registered & Verified By</div>
 
-            <!-- Three Official Logos -->
+            <!-- Five Official Logos -->
             <div class="govt-logos">
                 <div class="govt-logo-item">
                     <img src="govt-punjab.png" alt="Government of Punjab" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2748%27 fill=%27%231B3A2A%27/%3E%3Ctext x=%2750%27 y=%2760%27 font-family=%27Arial%27 font-size=%2722%27 fill=%27%23FAF7F0%27 text-anchor=%27middle%27%3EGOP%3C/text%3E%3C/svg%3E'">
@@ -2370,16 +2375,16 @@
                     <span data-i18n="govt_2_short">Livestock & Dairy</span>
                 </div>
                 <div class="govt-logo-item">
-                    <img src="logo3.png" alt="Livestock Farm Registration" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2748%27 fill=%27%234A8B5C%27/%3E%3Ctext x=%2750%27 y=%2760%27 font-family=%27Arial%27 font-size=%2720%27 fill=%27%23FAF7F0%27 text-anchor=%27middle%27%3EFARM%3C/text%3E%3C/svg%3E'">
+                    <img src="logo2.png" alt="Farm Registration" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2748%27 fill=%27%234A8B5C%27/%3E%3Ctext x=%2750%27 y=%2760%27 font-family=%27Arial%27 font-size=%2720%27 fill=%27%23FAF7F0%27 text-anchor=%27middle%27%3EFARM%3C/text%3E%3C/svg%3E'">
                     <span data-i18n="govt_3_short">Farm Registration</span>
                 </div>
                 <div class="govt-logo-item">
-                    <img src="chamber.png" alt="Chamber" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2748%27 fill=%27%234A8B5C%27/%3E%3Ctext x=%2750%27 y=%2760%27 font-family=%27Arial%27 font-size=%2720%27 fill=%27%23FAF7F0%27 text-anchor=%27middle%27%3EFARM%3C/text%3E%3C/svg%3E'">
-                    <span data-i18n="govt_3_short">Chamber</span>
+                    <img src="chamber.png" alt="Chamber" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2748%27 fill=%27%234A8B5C%27/%3E%3Ctext x=%2750%27 y=%2760%27 font-family=%27Arial%27 font-size=%2720%27 fill=%27%23FAF7F0%27 text-anchor=%27middle%27%3ECHM%3C/text%3E%3C/svg%3E'">
+                    <span data-i18n="govt_4_short">Chamber</span>
                 </div>
                 <div class="govt-logo-item">
-                    <img src="fbr.png" alt="FBR" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2748%27 fill=%27%234A8B5C%27/%3E%3Ctext x=%2750%27 y=%2760%27 font-family=%27Arial%27 font-size=%2720%27 fill=%27%23FAF7F0%27 text-anchor=%27middle%27%3EFARM%3C/text%3E%3C/svg%3E'">
-                    <span data-i18n="govt_3_short">FBR</span>
+                    <img src="fbr.png" alt="FBR" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2748%27 fill=%27%234A8B5C%27/%3E%3Ctext x=%2750%27 y=%2760%27 font-family=%27Arial%27 font-size=%2720%27 fill=%27%23FAF7F0%27 text-anchor=%27middle%27%3EFBR%3C/text%3E%3C/svg%3E'">
+                    <span data-i18n="govt_5_short">FBR</span>
                 </div>
             </div>
         </div>
@@ -2895,15 +2900,12 @@
    ========================================================= */
 const TRANSLATIONS = {
     en: {
-        // Announcement
         ann_1: "Daily Fresh Dairy", ann_2: "Pure Milk", ann_3: "Farm Fresh",
         ann_4: "Ganjianwali Kalan", ann_5: "Sialkot", ann_6: "Organic Products", ann_7: "Morning Delivery",
-        // Logo & Nav
         logo_name: "Daily Fresh", logo_sub: "Dairy · Sialkot",
         nav_home: "Home", nav_about: "About", nav_products: "Products",
         nav_facilities: "Facilities", nav_gallery: "Gallery", nav_contact: "Contact",
         btn_order: "Order",
-        // Hero
         hero_eyebrow: "Farm to Table · Since 2010",
         hero_title_1: "Nature's Goodness,", hero_title_2: "Closer to Home.",
         hero_desc: "Premium farm-fresh dairy from Ganjianwali Kalan, Sialkot. Pure milk, creamy yogurt, aromatic ghee, and wholesome products — delivered with care from our family farm to your family table.",
@@ -2914,7 +2916,6 @@ const TRANSLATIONS = {
         meta_num_3: "Local", meta_lbl_3: "Sialkot Farm",
         badge_fresh: "Farm Fresh", badge_delivery: "Delivered Daily",
         scroll: "Scroll",
-        // Story
         story_location: "Ganjianwali Kalan, Sialkot",
         story_eyebrow: "Our Story",
         story_title: "A Family Farm, Rooted in Care.",
@@ -2923,7 +2924,6 @@ const TRANSLATIONS = {
         value_animal: "Animal Welfare", value_natural: "Natural Farming",
         value_family: "Family Owned", value_quality: "Quality Focused",
         btn_read_story: "Read Our Full Story",
-        // Why Choose Us
         why_eyebrow: "Why Choose Us",
         why_title: "The Daily Fresh Difference.",
         why_desc: "We're not just another dairy. We're your neighbours, your farmers, and your partners in bringing wholesome nutrition to your family.",
@@ -2932,7 +2932,6 @@ const TRANSLATIONS = {
         feat_2_title: "Fresh Daily", feat_2_desc: "Committed to freshness, with products prepared and handled with the utmost care.",
         feat_3_title: "Locally Sourced", feat_3_desc: "Proudly based in Ganjianwali Kalan, Sialkot — supporting our local community.",
         feat_4_title: "Direct Enquiry", feat_4_desc: "Reach us directly on WhatsApp for orders, questions, and custom requests.",
-        // Products
         prod_eyebrow: "Our Products",
         prod_title: "Farm-Fresh Dairy Collection.",
         prod_desc: "A curated range of dairy essentials — each one crafted with care from our farm to your home.",
@@ -2945,7 +2944,6 @@ const TRANSLATIONS = {
         no_products_sub: "Try adjusting your search or filter.",
         filter_all: "All",
         btn_enquire: "Enquire",
-        // Facilities
         fac_eyebrow: "Our Farm Facilities",
         fac_title: "Where Care Meets Craft.",
         fac_desc: "Our facilities reflect our commitment to quality — from cattle care to hygienic processing.",
@@ -2954,7 +2952,6 @@ const TRANSLATIONS = {
         fac_page_title: "Where Care Meets Craft.",
         fac_page_desc: "Our facilities reflect our commitment to quality, hygiene, and animal welfare. Details are being confirmed — please contact us for the latest information.",
         status_confirmed: "Confirmed", status_pending: "Pending Info",
-        // Gallery
         gal_eyebrow: "Farm Gallery",
         gal_title: "A Glimpse Into Our Farm.",
         gal_desc: "Moments from our daily life — the animals, the land, and the people who make it all happen.",
@@ -2962,18 +2959,17 @@ const TRANSLATIONS = {
         gal_page_eyebrow: "Farm Gallery",
         gal_page_title: "A Glimpse Into Our Farm.",
         gal_page_desc: "Moments from our daily life — the animals, the land, and the people who make it all happen.",
-        // Government / Sponsored By
         govt_label: "Registered & Verified By",
         govt_1_short: "Govt. of Punjab",
         govt_2_short: "Livestock & Dairy",
         govt_3_short: "Farm Registration",
-        // CTA
+        govt_4_short: "Chamber",
+        govt_5_short: "FBR",
         cta_eyebrow: "Ready to Order?",
         cta_title: "Let's Bring Freshness Home.",
         cta_desc: "Reach out on WhatsApp for orders, enquiries, or to know more about what's available today.",
         btn_chat_whatsapp: "Chat on WhatsApp",
         btn_contact_us: "Contact Us",
-        // About Page
         about_eyebrow: "About Us",
         about_title: "The Story of Daily Fresh Dairy.",
         about_desc: "A family farm rooted in Ganjianwali Kalan, Sialkot — built on care, quality, and community.",
@@ -2986,7 +2982,6 @@ const TRANSLATIONS = {
         about_p3: "We believe that great dairy starts with great care. Our animals are looked after with attention and respect, and our processes are designed to preserve the natural goodness of every product we make.",
         about_p4: "From milking to packaging to delivery, we focus on doing the simple things well. No shortcuts, no compromises — just honest work and quality you can trust.",
         btn_get_in_touch: "Get in Touch",
-        // Contact
         contact_eyebrow: "Get in Touch",
         contact_title: "Let's Talk Dairy.",
         contact_desc: "Have a question, want to place an order, or need more information? We're here to help.",
@@ -3005,14 +3000,12 @@ const TRANSLATIONS = {
         form_message: "Your Message *",
         form_help: "Your message will open in WhatsApp for instant delivery.",
         btn_send_whatsapp: "Send via WhatsApp",
-        // Drawer
         drawer_title: "Your Enquiry List",
         drawer_empty: "Your enquiry list is empty.",
         drawer_empty_sub: "Add products to send a WhatsApp enquiry.",
         drawer_items: "Items:",
         btn_send_enquiry: "Send Enquiry via WhatsApp",
         btn_enquiry: "Enquiry",
-        // Admin
         admin_title: "Admin Dashboard",
         admin_sub: "Daily Fresh Dairy Management",
         admin_user: "Username", admin_pass: "Password",
@@ -3039,7 +3032,6 @@ const TRANSLATIONS = {
         setting_wa_help: "Include country code without + (e.g., 923349999114)",
         setting_address: "Farm Address",
         btn_save_settings: "Save Settings",
-        // Footer
         footer_brand: "Daily Fresh Dairy",
         footer_desc: "Premium farm-fresh dairy from our family farm in Ganjianwali Kalan, Sialkot — delivered with care to your home.",
         footer_nav: "Navigate",
@@ -3050,13 +3042,11 @@ const TRANSLATIONS = {
         footer_made: "Made with care in Sialkot, Pakistan",
         prod_milk: "Fresh Milk", prod_yogurt: "Yogurt", prod_ghee: "Desi Ghee",
         prod_cheese: "Cheese", prod_butter: "Butter",
-        // Modal
         modal_add_product: "Add Product", modal_edit_product: "Edit Product",
         modal_name: "Product Name *", modal_cat: "Category *",
         modal_price: "Price (Rs.)", modal_unit: "Unit",
         modal_image: "Image URL", modal_desc: "Description",
         btn_cancel: "Cancel", btn_save: "Save",
-        // Toast
         toast_saved: "Product saved",
         toast_deleted: "Product deleted",
         toast_added: "Added to enquiry list",
@@ -3073,15 +3063,12 @@ const TRANSLATIONS = {
         confirm_clear: "Clear all enquiries? This cannot be undone."
     },
     ur: {
-        // Announcement
         ann_1: "ڈیلی فریش ڈیری", ann_2: "خالص دودھ", ann_3: "فارم تازہ",
         ann_4: "گنجیالوالی کلاں", ann_5: "سیالکوٹ", ann_6: "نامیاتی مصنوعات", ann_7: "صبح کی ڈیلیوری",
-        // Logo & Nav
         logo_name: "ڈیلی فریش", logo_sub: "ڈیری · سیالکوٹ",
         nav_home: "ہوم", nav_about: "تعارف", nav_products: "مصنوعات",
         nav_facilities: "سہولیات", nav_gallery: "گیلری", nav_contact: "رابطہ",
         btn_order: "آرڈر کریں",
-        // Hero
         hero_eyebrow: "فارم سے دسترخوان تک · 2010 سے",
         hero_title_1: "قدرت کی نعمت،", hero_title_2: "گھر کے قریب۔",
         hero_desc: "گنجیالوالی کلاں، سیالکوٹ سے اعلیٰ فارم تازہ ڈیری۔ خالص دودھ، ملائی دار دہی، خوشبودار دیسی گھی، اور صحت بخش مصنوعات — ہمارے خاندانی فارم سے آپ کے دسترخوان تک، محبت کے ساتھ۔",
@@ -3092,7 +3079,6 @@ const TRANSLATIONS = {
         meta_num_3: "مقامی", meta_lbl_3: "سیالکوٹ فارم",
         badge_fresh: "فارم تازہ", badge_delivery: "روزانہ ڈیلیوری",
         scroll: "نیچے",
-        // Story
         story_location: "گنجیالوالی کلاں، سیالکوٹ",
         story_eyebrow: "ہماری کہانی",
         story_title: "ایک خاندانی فارم، محبت میں جڑا ہوا۔",
@@ -3101,7 +3087,6 @@ const TRANSLATIONS = {
         value_animal: "جانوروں کی دیکھ بھال", value_natural: "قدرتی کاشتکاری",
         value_family: "خاندانی ملکیت", value_quality: "معیار پر توجہ",
         btn_read_story: "ہماری مکمل کہانی پڑھیں",
-        // Why Choose Us
         why_eyebrow: "ہمیں کیوں منتخب کریں",
         why_title: "ڈیلی فریش کا فرق۔",
         why_desc: "ہم صرف ایک اور ڈیری نہیں ہیں۔ ہم آپ کے پڑوسی، آپ کے کسان، اور آپ کے خاندان تک صحت بخش غذا پہنچانے میں آپ کے شراکت دار ہیں۔",
@@ -3110,7 +3095,6 @@ const TRANSLATIONS = {
         feat_2_title: "روزانہ تازہ", feat_2_desc: "تازگی کے لیے پرعزم، مصنوعات کو انتہائی احتیاط سے تیار اور سنبھالا جاتا ہے۔",
         feat_3_title: "مقامی طور پر تیار", feat_3_desc: "فخر سے گنجیالوالی کلاں، سیالکوٹ میں قائم — اپنی مقامی کمیونٹی کی معاونت کرتے ہوئے۔",
         feat_4_title: "براہ راست رابطہ", feat_4_desc: "آرڈر، سوالات، اور خصوصی درخواستوں کے لیے سیدھا واٹس ایپ پر ہم سے رابطہ کریں۔",
-        // Products
         prod_eyebrow: "ہماری مصنوعات",
         prod_title: "فارم تازہ ڈیری مجموعہ۔",
         prod_desc: "ڈیری کی ضروریات کی ایک منتخب رینج — ہر ایک ہمارے فارم سے آپ کے گھر تک، محبت سے بنائی گئی۔",
@@ -3123,7 +3107,6 @@ const TRANSLATIONS = {
         no_products_sub: "اپنی تلاش یا فلٹر کو ایڈجسٹ کرنے کی کوشش کریں۔",
         filter_all: "تمام",
         btn_enquire: "پوچھیں",
-        // Facilities
         fac_eyebrow: "ہمارے فارم کی سہولیات",
         fac_title: "جہاں دیکھ بھال ہنر سے ملتی ہے۔",
         fac_desc: "ہماری سہولیات معیار کے لیے ہماری وابستگی کو ظاہر کرتی ہیں — مویشیوں کی دیکھ بھال سے لے کر صاف ستھری پروسیسنگ تک۔",
@@ -3132,7 +3115,6 @@ const TRANSLATIONS = {
         fac_page_title: "جہاں دیکھ بھال ہنر سے ملتی ہے۔",
         fac_page_desc: "ہماری سہولیات معیار، صفائی، اور جانوروں کی بہبود کے لیے ہماری وابستگی کو ظاہر کرتی ہیں۔ تفصیلات کی تصدیق کی جا رہی ہے — تازہ ترین معلومات کے لیے ہم سے رابطہ کریں۔",
         status_confirmed: "تصدیق شدہ", status_pending: "معلومات زیر التواء",
-        // Gallery
         gal_eyebrow: "فارم گیلری",
         gal_title: "ہمارے فارم کی ایک جھلک۔",
         gal_desc: "ہماری روزمرہ زندگی کے لمحات — جانور، زمین، اور وہ لوگ جو یہ سب ممکن بناتے ہیں۔",
@@ -3140,18 +3122,17 @@ const TRANSLATIONS = {
         gal_page_eyebrow: "فارم گیلری",
         gal_page_title: "ہمارے فارم کی ایک جھلک۔",
         gal_page_desc: "ہماری روزمرہ زندگی کے لمحات — جانور، زمین، اور وہ لوگ جو یہ سب ممکن بناتے ہیں۔",
-        // Government / Sponsored By
         govt_label: "رجسٹرڈ و تصدیق شدہ از",
         govt_1_short: "حکومتِ پنجاب",
         govt_2_short: "لائیو اسٹاک و ڈیری",
         govt_3_short: "فارم رجسٹریشن",
-        // CTA
+        govt_4_short: "چیمبر",
+        govt_5_short: "ایف بی آر",
         cta_eyebrow: "آرڈر دینے کے لیے تیار؟",
         cta_title: "آئیے تازگی گھر لائیں۔",
         cta_desc: "آرڈر، انکوائری، یا آج کیا دستیاب ہے جاننے کے لیے واٹس ایپ پر رابطہ کریں۔",
         btn_chat_whatsapp: "واٹس ایپ پر بات کریں",
         btn_contact_us: "ہم سے رابطہ کریں",
-        // About Page
         about_eyebrow: "ہمارے بارے میں",
         about_title: "ڈیلی فریش ڈیری کی کہانی۔",
         about_desc: "گنجیالوالی کلاں، سیالکوٹ میں جڑا ایک خاندانی فارم — دیکھ بھال، معیار، اور کمیونٹی پر بنایا گیا۔",
@@ -3164,7 +3145,6 @@ const TRANSLATIONS = {
         about_p3: "ہم سمجھتے ہیں کہ بہترین ڈیری بہترین دیکھ بھال سے شروع ہوتی ہے۔ ہمارے جانوروں کی توجہ اور احترام کے ساتھ دیکھ بھال کی جاتی ہے، اور ہمارے عمل ہر مصنوعات کی قدرتی اچھائی کو محفوظ رکھنے کے لیے ڈیزائن کیے گئے ہیں۔",
         about_p4: "دودھ دینے سے لے کر پیکنگ اور ڈیلیوری تک، ہم سادہ چیزوں کو اچھی طرح کرنے پر توجہ دیتے ہیں۔ کوئی شارٹ کٹ نہیں، کوئی سمجھوتہ نہیں — صرف ایماندار کام اور معیار جس پر آپ بھروسہ کر سکتے ہیں۔",
         btn_get_in_touch: "رابطہ کریں",
-        // Contact
         contact_eyebrow: "رابطے میں رہیں",
         contact_title: "آئیے ڈیری کی بات کریں۔",
         contact_desc: "کوئی سوال ہے، آرڈر دینا چاہتے ہیں، یا مزید معلومات چاہیے؟ ہم مدد کے لیے حاضر ہیں۔",
@@ -3183,14 +3163,12 @@ const TRANSLATIONS = {
         form_message: "آپ کا پیغام *",
         form_help: "آپ کا پیغام فوری ڈیلیوری کے لیے واٹس ایپ میں کھل جائے گا۔",
         btn_send_whatsapp: "واٹس ایپ کے ذریعے بھیجیں",
-        // Drawer
         drawer_title: "آپ کی انکوائری فہرست",
         drawer_empty: "آپ کی انکوائری فہرست خالی ہے۔",
         drawer_empty_sub: "واٹس ایپ انکوائری بھیجنے کے لیے مصنوعات شامل کریں۔",
         drawer_items: "اشیاء:",
         btn_send_enquiry: "واٹس ایپ پر انکوائری بھیجیں",
         btn_enquiry: "انکوائری",
-        // Admin
         admin_title: "ایڈمن ڈیش بورڈ",
         admin_sub: "ڈیلی فریش ڈیری مینجمنٹ",
         admin_user: "صارف نام", admin_pass: "پاس ورڈ",
@@ -3217,7 +3195,6 @@ const TRANSLATIONS = {
         setting_wa_help: "ملک کا کوڈ شامل کریں بغیر + (مثال: 923349999114)",
         setting_address: "فارم کا پتہ",
         btn_save_settings: "ترتیبات محفوظ کریں",
-        // Footer
         footer_brand: "ڈیلی فریش ڈیری",
         footer_desc: "گنجیالوالی کلاں، سیالکوٹ میں ہمارے خاندانی فارم سے اعلیٰ فارم تازہ ڈیری — آپ کے گھر تک محبت کے ساتھ۔",
         footer_nav: "نیویگیٹ",
@@ -3228,13 +3205,11 @@ const TRANSLATIONS = {
         footer_made: "سیالکوٹ، پاکستان میں محبت سے بنایا گیا",
         prod_milk: "تازہ دودھ", prod_yogurt: "دہی", prod_ghee: "دیسی گھی",
         prod_cheese: "پنیر", prod_butter: "مکھن",
-        // Modal
         modal_add_product: "مصنوعات شامل کریں", modal_edit_product: "مصنوعات میں ترمیم کریں",
         modal_name: "مصنوعات کا نام *", modal_cat: "زمرہ *",
         modal_price: "قیمت (روپے)", modal_unit: "یونٹ",
         modal_image: "تصویر کا URL", modal_desc: "تفصیل",
         btn_cancel: "منسوخ", btn_save: "محفوظ کریں",
-        // Toast
         toast_saved: "مصنوعات محفوظ ہوگئیں",
         toast_deleted: "مصنوعات حذف ہوگئیں",
         toast_added: "انکوائری فہرست میں شامل",
@@ -3296,7 +3271,6 @@ function setLanguage(lang) {
     currentLang = lang;
     const html = document.documentElement;
     const body = document.body;
-    
     if (lang === 'ur') {
         html.setAttribute('lang', 'ur');
         html.setAttribute('dir', 'rtl');
@@ -3310,21 +3284,15 @@ function setLanguage(lang) {
         document.getElementById('langBtn').textContent = 'اردو';
         localStorage.setItem('dfd-lang', 'en');
     }
-    
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (TRANSLATIONS[lang] && TRANSLATIONS[lang][key]) {
-            if (TRANSLATIONS[lang][key].includes('<br>')) {
-                el.innerHTML = TRANSLATIONS[lang][key];
-            } else {
-                el.textContent = TRANSLATIONS[lang][key];
-            }
+            if (TRANSLATIONS[lang][key].includes('<br>')) el.innerHTML = TRANSLATIONS[lang][key];
+            else el.textContent = TRANSLATIONS[lang][key];
         }
     });
-    
     const searchInput = document.getElementById('productSearch');
     if (searchInput) searchInput.placeholder = TRANSLATIONS[lang].search_placeholder;
-    
     if (currentPage === 'home') { renderHomeProducts(); renderHomeFacilities(); renderHomeGallery(); }
     if (currentPage === 'products') renderAllProducts();
     if (currentPage === 'facilities') renderAllFacilities();
@@ -3332,10 +3300,7 @@ function setLanguage(lang) {
     updateFilterPills();
 }
 
-function toggleLang() {
-    setLanguage(currentLang === 'en' ? 'ur' : 'en');
-    showToast(currentLang === 'ur' ? 'اردو میں تبدیل ہو گیا' : 'Switched to English');
-}
+function toggleLang() { setLanguage(currentLang === 'en' ? 'ur' : 'en'); showToast(currentLang === 'ur' ? 'اردو میں تبدیل ہو گیا' : 'Switched to English'); }
 window.toggleLang = toggleLang;
 
 function loadData() {
