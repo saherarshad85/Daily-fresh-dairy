@@ -473,44 +473,147 @@
         .btn-sm { padding: 10px 22px; font-size: 11px; }
         .btn-lg { padding: 18px 40px; font-size: 14px; }
 
-        /* Header */
-        .header {
+        /* =========================================================
+           TOP BAR — Green strip
+           ========================================================= */
+        .top-bar {
             position: fixed;
             top: 0; left: 0; right: 0;
-            z-index: 1000;
-            background: rgba(250, 247, 240, 0.98) !important; /* Solid background */
-            border-bottom: 1px solid transparent;
-            transition: all 0.4s var(--ease);
+            z-index: 1001;
+            background: #1B3A2A;
+            color: rgba(250, 247, 240, 0.9);
+            height: 40px;
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
         }
-        .header.scrolled { background: rgba(250, 247, 240, 0.98) !important; border-bottom-color: var(--line); box-shadow: var(--shadow-xs); }
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 0 40px;
+            gap: 20px;
+        }
+        .top-bar-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .top-bar-left .tagline {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .top-bar-left .tagline i {
+            color: #7FB88E;
+            font-size: 12px;
+        }
+        .top-bar-left .divider {
+            width: 1px;
+            height: 14px;
+            background: rgba(250, 247, 240, 0.15);
+        }
+        .top-bar-right {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        .top-bar-right .social-icons {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .top-bar-right .social-icons a {
+            color: rgba(250, 247, 240, 0.7);
+            font-size: 13px;
+            transition: all 0.3s var(--ease);
+        }
+        .top-bar-right .social-icons a:hover {
+            color: #E4CE8F;
+            transform: translateY(-1px);
+        }
+        .top-bar-right .divider {
+            width: 1px;
+            height: 14px;
+            background: rgba(250, 247, 240, 0.15);
+        }
+        .top-bar-right .location {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: rgba(250, 247, 240, 0.7);
+            font-size: 12px;
+        }
+        .top-bar-right .location i {
+            color: #E4CE8F;
+            font-size: 12px;
+        }
+
+        /* =========================================================
+           FLOATING CURVED HEADER
+           ========================================================= */
+        .header-wrapper {
+            position: fixed;
+            top: 40px;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 10px 0;
+            transition: all 0.4s var(--ease);
+            pointer-events: none;
+        }
+        .header-wrapper .container {
+            pointer-events: auto;
+        }
+        .header {
+            background: rgba(250, 247, 240, 0.98);
+            border-radius: 60px;
+            box-shadow: 0 8px 32px rgba(15, 37, 26, 0.08);
+            border: 1px solid rgba(27, 58, 42, 0.06);
+            padding: 0 28px;
+            transition: all 0.4s var(--ease);
+            max-width: 1320px;
+            margin: 0 auto;
+        }
+        .header.scrolled {
+            background: rgba(250, 247, 240, 0.99);
+            box-shadow: 0 12px 40px rgba(15, 37, 26, 0.12);
+            border-color: rgba(27, 58, 42, 0.1);
+        }
         .header-inner {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 14px 0;
-            gap: 32px;
-            max-height: 90px;
-        }
-        .header.scrolled .header-inner { 
             padding: 10px 0;
-            max-height: 76px;
+            gap: 24px;
+            min-height: 70px;
         }
-        .logo { display: flex; align-items: center; gap: 14px; cursor: pointer; flex-shrink: 0; max-height: 70px; overflow: visible; }
-        .logo-mark {
-            width: 52px; height: 52px;
-            border-radius: 50%;
-            background: var(--forest);
-            color: var(--ivory);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 22px; flex-shrink: 0;
-            box-shadow: 0 6px 18px rgba(27, 58, 42, 0.25);
-            transition: transform 0.4s var(--ease);
+        .header.scrolled .header-inner {
+            min-height: 62px;
+            padding: 8px 0;
         }
-        .logo:hover .logo-mark { transform: rotate(-8deg) scale(1.05); }
+        .logo { display: flex; align-items: center; gap: 12px; cursor: pointer; flex-shrink: 0; }
+        .logo-image {
+            height: 48px !important;
+            width: auto !important;
+            max-height: 48px !important;
+            object-fit: contain !important;
+            transition: all 0.4s var(--ease);
+            filter: drop-shadow(0 2px 6px rgba(27, 58, 42, 0.1));
+            flex-shrink: 0;
+        }
+        .header.scrolled .logo-image {
+            height: 42px !important;
+            max-height: 42px !important;
+        }
         .logo-text { display: flex; flex-direction: column; line-height: 1; flex-shrink: 0; }
         .logo-text h1 {
             font-family: var(--font-display);
-            font-size: 20px; font-weight: 500;
+            font-size: 20px; font-weight: 600;
             color: var(--forest-deep);
             letter-spacing: -0.02em;
             white-space: nowrap;
@@ -519,31 +622,33 @@
             font-size: 9px; letter-spacing: 4px;
             text-transform: uppercase;
             color: var(--leaf); font-weight: 600;
-            margin-top: 3px;
+            margin-top: 2px;
             white-space: nowrap;
         }
-        .nav { display: flex; gap: 6px; align-items: center; }
+
+        .nav { display: flex; gap: 4px; align-items: center; }
         .nav a {
             font-size: 13px; font-weight: 500;
             color: var(--text-body);
-            padding: 10px 16px;
+            padding: 10px 18px;
             border-radius: var(--r-full);
             position: relative;
             transition: all 0.3s var(--ease);
         }
         .nav a:hover { color: var(--forest); background: var(--leaf-mist); }
-        .nav a.active { color: var(--forest); font-weight: 600; }
-        .nav a.active::after {
-            content: '';
-            position: absolute;
-            bottom: 2px; left: 50%;
-            transform: translateX(-50%);
-            width: 4px; height: 4px;
-            background: var(--leaf); border-radius: 50%;
+        .nav a.active {
+            color: var(--ivory);
+            background: var(--forest);
+            font-weight: 600;
         }
+        .nav a.active:hover {
+            background: var(--forest-deep);
+            color: var(--ivory);
+        }
+
         .header-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
         .lang-btn {
-            padding: 8px 14px;
+            padding: 8px 16px;
             background: transparent;
             border: 1px solid var(--line-mid);
             border-radius: var(--r-full);
@@ -551,27 +656,34 @@
             letter-spacing: 1px;
             color: var(--text-body);
             transition: all 0.3s var(--ease);
-            min-width: 60px;
+            min-width: 56px;
         }
         .lang-btn:hover { border-color: var(--forest); color: var(--forest); }
         .menu-toggle {
             display: none; font-size: 20px;
             color: var(--forest); padding: 8px; cursor: pointer;
         }
-        .logo-image {
-            height: 58px !important;
-            width: auto !important;
-            max-height: 58px !important;
-            object-fit: contain !important;
-            transition: all 0.4s var(--ease);
-            filter: drop-shadow(0 2px 6px rgba(27, 58, 42, 0.15));
-            flex-shrink: 0;
+
+        .header-order-btn {
+            background: var(--forest);
+            color: var(--ivory);
+            padding: 12px 26px;
+            border-radius: var(--r-full);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s var(--ease);
+            box-shadow: 0 4px 14px rgba(27, 58, 42, 0.25);
         }
-        .header.scrolled .logo-image { 
-            height: 48px !important; 
-            max-height: 48px !important;
+        .header-order-btn:hover {
+            background: var(--forest-deep);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(27, 58, 42, 0.35);
         }
-        .logo:hover .logo-image { transform: scale(1.05); }
 
         /* Announcement */
         .announcement {
@@ -615,28 +727,26 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Hero — REMOVED ZOOM ANIMATION & MADE IMAGE CRISP */
+        /* Hero */
         .hero {
             position: relative; min-height: 100vh;
             display: flex; align-items: center;
             overflow: hidden; background: var(--forest-deep);
-            padding-top: calc(80px + 38px) !important; /* Header + Strip */
+            padding-top: 120px;
         }
         .hero-bg {
             position: absolute; inset: 0;
             background-size: cover; background-position: center;
             z-index: 1;
-            /* REMOVED: animation: heroZoom 20s ease-in-out infinite alternate; */
         }
         .hero-bg::after {
             content: '';
             position: absolute; inset: 0;
-            /* Darker gradient for better text contrast, but image is crisp underneath */
-            background: linear-gradient(105deg, rgba(15, 37, 26, 0.92) 0%, rgba(15, 37, 26, 0.7) 40%, rgba(15, 37, 26, 0.35) 70%, rgba(15, 37, 26, 0.6) 100%);
+            background: linear-gradient(105deg, rgba(15, 37, 26, 0.88) 0%, rgba(15, 37, 26, 0.65) 40%, rgba(15, 37, 26, 0.25) 70%, rgba(15, 37, 26, 0.5) 100%);
         }
         html[lang="ur"] .hero-bg::after,
         body.urdu-mode .hero-bg::after {
-            background: linear-gradient(255deg, rgba(15, 37, 26, 0.92) 0%, rgba(15, 37, 26, 0.7) 40%, rgba(15, 37, 26, 0.35) 70%, rgba(15, 37, 26, 0.6) 100%);
+            background: linear-gradient(255deg, rgba(15, 37, 26, 0.88) 0%, rgba(15, 37, 26, 0.65) 40%, rgba(15, 37, 26, 0.25) 70%, rgba(15, 37, 26, 0.5) 100%);
         }
         .hero-inner {
             position: relative; z-index: 2;
@@ -644,7 +754,7 @@
             display: grid;
             grid-template-columns: 1.15fr 0.85fr;
             gap: 80px; align-items: center;
-            padding: 60px 0 80px;
+            padding: 40px 0 80px;
         }
         .hero-left .eyebrow { color: var(--gold-light); }
         .hero-left .eyebrow::before { background: var(--gold-light); }
@@ -699,7 +809,6 @@
             position: absolute; bottom: 20px; right: 20px;
             z-index: 4;
             background: rgba(250, 247, 240, 0.95);
-           
             padding: 18px 24px;
             border-radius: var(--r-md);
             box-shadow: var(--shadow-lg);
@@ -769,7 +878,6 @@
         .story-image-badge {
             position: absolute; top: 28px; left: 28px;
             background: rgba(250, 247, 240, 0.95);
-            
             padding: 14px 22px;
             border-radius: var(--r-full);
             display: flex; align-items: center; gap: 10px;
@@ -798,36 +906,80 @@
         }
         .story-value span { font-size: 14px; font-weight: 500; color: var(--text-ink); }
 
-        /* Feature Panel */
+        /* =========================================================
+           FEATURE PANEL — ENHANCED & MORE ATTRACTIVE
+           ========================================================= */
         .feature-panel {
             position: relative;
             background: var(--forest-deep);
             color: var(--ivory);
-            padding: 120px 0; overflow: hidden;
+            padding: 140px 0;
+            overflow: hidden;
         }
+
         .feature-panel::before {
             content: '';
-            position: absolute; top: 0; left: 0;
-            width: 100%; height: 100%;
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(74, 139, 92, 0.25), transparent 65%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .feature-panel::after {
+            content: '';
+            position: absolute;
+            bottom: -25%;
+            left: -15%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(201, 169, 97, 0.15), transparent 65%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .feature-panel .leaf-texture {
+            position: absolute;
+            inset: 0;
             background-image: url('h.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            opacity: 0.08;
-            z-index: 0;
+            opacity: 0.06;
+            z-index: 1;
             pointer-events: none;
         }
-        .feature-panel::after {
-            content: '';
-            position: absolute; bottom: -10%; left: -10%;
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(201, 169, 97, 0.1), transparent 70%);
-            border-radius: 50%; pointer-events: none;
+
+        .feature-panel .deco-leaf {
+            position: absolute;
+            color: var(--leaf-light);
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 1;
         }
+        .deco-leaf-1 { top: 8%; left: 5%; font-size: 60px; transform: rotate(-20deg); animation: floatLeaf 8s ease-in-out infinite; }
+        .deco-leaf-2 { top: 15%; right: 8%; font-size: 44px; transform: rotate(30deg); animation: floatLeaf 10s ease-in-out infinite 1s; }
+        .deco-leaf-3 { bottom: 12%; left: 12%; font-size: 50px; transform: rotate(-45deg); animation: floatLeaf 9s ease-in-out infinite 2s; }
+        .deco-leaf-4 { bottom: 8%; right: 15%; font-size: 38px; transform: rotate(15deg); animation: floatLeaf 11s ease-in-out infinite 0.5s; }
+        @keyframes floatLeaf {
+            0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); }
+            50% { transform: translateY(-18px) rotate(calc(var(--rot, 0deg) + 8deg)); }
+        }
+        .deco-leaf-1 { --rot: -20deg; }
+        .deco-leaf-2 { --rot: 30deg; }
+        .deco-leaf-3 { --rot: -45deg; }
+        .deco-leaf-4 { --rot: 15deg; }
+
         .feature-panel .container { position: relative; z-index: 2; }
         .feature-panel-grid {
-            display: grid; grid-template-columns: 1.1fr 1fr;
-            gap: 80px; align-items: center;
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 80px;
+            align-items: center;
         }
         .feature-panel .eyebrow { color: var(--gold-light); }
         .feature-panel .eyebrow::before { background: var(--gold-light); }
@@ -835,39 +987,125 @@
         .feature-panel .display em { color: var(--gold-light); }
         .feature-panel-desc {
             font-size: 16px;
-            color: rgba(250, 247, 240, 0.8);
-            line-height: 1.9; margin-bottom: 40px;
+            color: rgba(250, 247, 240, 0.85);
+            line-height: 1.9;
+            margin-bottom: 40px;
         }
-        .feature-list { display: flex; flex-direction: column; gap: 0; }
+
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
         .feature-item-row {
-            display: flex; gap: 24px;
-            padding: 28px 0;
-            border-bottom: 1px solid rgba(250, 247, 240, 0.1);
+            display: flex;
+            gap: 20px;
+            padding: 22px 24px;
+            border-radius: var(--r-lg);
             align-items: flex-start;
+            background: rgba(250, 247, 240, 0.03);
+            border: 1px solid rgba(250, 247, 240, 0.06);
+            transition: all 0.4s var(--ease);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
-        .feature-item-row:last-child { border-bottom: none; }
+        .feature-item-row::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--leaf), var(--gold));
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.5s var(--ease);
+        }
+        .feature-item-row:hover {
+            background: rgba(250, 247, 240, 0.08);
+            border-color: rgba(201, 169, 97, 0.3);
+            transform: translateX(6px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+        }
+        .feature-item-row:hover::before {
+            transform: scaleY(1);
+        }
         .feature-item-icon {
-            width: 48px; height: 48px;
-            background: rgba(74, 139, 92, 0.15);
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, rgba(74, 139, 92, 0.25), rgba(74, 139, 92, 0.1));
             color: var(--leaf-light);
             border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 18px; flex-shrink: 0;
-            border: 1px solid rgba(74, 139, 92, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+            border: 1px solid rgba(74, 139, 92, 0.35);
+            transition: all 0.4s var(--ease);
+            position: relative;
+        }
+        .feature-item-row:hover .feature-item-icon {
+            background: linear-gradient(135deg, var(--leaf), var(--forest-mid));
+            color: var(--ivory);
+            border-color: var(--gold);
+            transform: scale(1.08) rotate(-5deg);
+            box-shadow: 0 8px 20px rgba(74, 139, 92, 0.4);
+        }
+        .feature-item-content {
+            flex: 1;
+            padding-top: 2px;
         }
         .feature-item-content h4 {
             font-family: var(--font-display);
-            font-size: 18px; font-weight: 500;
-            color: var(--ivory); margin-bottom: 6px;
+            font-size: 19px;
+            font-weight: 500;
+            color: var(--ivory);
+            margin-bottom: 6px;
+            transition: color 0.3s var(--ease);
+        }
+        .feature-item-row:hover .feature-item-content h4 {
+            color: var(--gold-light);
         }
         .feature-item-content p {
             font-size: 14px;
             color: rgba(250, 247, 240, 0.7);
             line-height: 1.7;
+            transition: color 0.3s var(--ease);
+        }
+        .feature-item-row:hover .feature-item-content p {
+            color: rgba(250, 247, 240, 0.9);
         }
 
-        /* Products */
-        .products-section { background: var(--ivory-warm); position: relative; }
+        /* =========================================================
+           PRODUCTS SECTION — h.png watermark
+           ========================================================= */
+        .products-section {
+            position: relative;
+            background: var(--ivory-warm);
+            overflow: hidden;
+        }
+        .products-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('h.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.06;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .products-section .container {
+            position: relative;
+            z-index: 2;
+        }
         .products-toolbar {
             display: flex;
             justify-content: space-between;
@@ -1014,8 +1252,33 @@
         }
         .empty-state p { color: var(--text-soft); font-size: 14px; }
 
-        /* Gallery */
-        .gallery-section { background: var(--ivory); }
+        /* =========================================================
+           GALLERY SECTION — f.png watermark
+           ========================================================= */
+        .gallery-section {
+            position: relative;
+            background: var(--ivory);
+            overflow: hidden;
+        }
+        .gallery-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('f.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.06;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .gallery-section .container {
+            position: relative;
+            z-index: 2;
+        }
         .gallery-masonry { column-count: 3; column-gap: 20px; }
         .gallery-item {
             break-inside: avoid;
@@ -1074,8 +1337,34 @@
         }
         .lightbox-close:hover { background: var(--gold); color: var(--forest-deep); }
 
-        /* Facilities */
-        .facilities-section { background: var(--forest-deep); color: var(--ivory); }
+        /* =========================================================
+           FACILITIES SECTION — p.png watermark
+           ========================================================= */
+        .facilities-section {
+            position: relative;
+            background: var(--forest-deep);
+            color: var(--ivory);
+            overflow: hidden;
+        }
+        .facilities-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('p.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.08;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .facilities-section .container {
+            position: relative;
+            z-index: 2;
+        }
         .facilities-section .eyebrow { color: var(--gold-light); }
         .facilities-section .eyebrow::before { background: var(--gold-light); }
         .facilities-section .display { color: var(--ivory); }
@@ -1134,6 +1423,137 @@
             color: var(--text-mist);
             background: rgba(250, 247, 240, 0.05);
             border-color: rgba(250, 247, 240, 0.15);
+        }
+
+        /* =========================================================
+           SPONSORED BY / GOVERNMENT SECTION — CLEAN LOGO ROW
+           ========================================================= */
+        .govt-section {
+            background: linear-gradient(135deg, #FAF7F0 0%, #F3EDE0 100%);
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid rgba(27, 58, 42, 0.06);
+            border-bottom: 1px solid rgba(27, 58, 42, 0.06);
+        }
+        .govt-section .container {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        /* Small heading line */
+        .govt-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            font-family: var(--font-body);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--leaf);
+        }
+        .govt-label::before,
+        .govt-label::after {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: var(--leaf);
+            opacity: 0.5;
+        }
+
+        /* Logo Row */
+        .govt-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        .govt-logo-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            text-align: center;
+        }
+        .govt-logo-item img {
+            height: 90px;
+            width: auto;
+            max-width: 140px;
+            object-fit: contain;
+            filter: drop-shadow(0 6px 14px rgba(15, 37, 26, 0.08));
+            transition: transform 0.4s var(--ease);
+        }
+        .govt-logo-item:hover img {
+            transform: translateY(-4px) scale(1.04);
+        }
+        .govt-logo-item span {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-soft);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        html[lang="ur"] .govt-label,
+        body.urdu-mode .govt-label {
+            font-family: var(--font-urdu);
+            letter-spacing: 0;
+            font-size: 15px;
+        }
+        html[lang="ur"] .govt-logo-item span,
+        body.urdu-mode .govt-logo-item span {
+            font-family: var(--font-urdu);
+            letter-spacing: 0;
+            font-size: 14px;
+            text-transform: none;
+        }
+
+        @media (max-width: 768px) {
+            .govt-section { padding: 45px 0; }
+            .govt-logos { gap: 36px; }
+            .govt-logo-item img { height: 70px; }
+            .govt-logo-item span { font-size: 10px; }
+        }
+
+        @media (max-width: 480px) {
+            .govt-logos { gap: 24px; }
+            .govt-logo-item img { height: 60px; }
+        }
+
+        /* =========================================================
+           CTA SECTION — f.png watermark
+           ========================================================= */
+        .cta-section {
+            position: relative;
+            background: var(--forest-deep);
+            padding: 100px 0;
+            text-align: center;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('f.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.08;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .cta-section .container {
+            position: relative;
+            z-index: 2;
         }
 
         /* Contact */
@@ -1548,11 +1968,13 @@
         @media (max-width: 768px) {
             .container, .container-narrow { padding: 0 20px; }
             .section { padding: 70px 0; }
-            .announcement { top: 84px; }
-            .header-inner { padding: 16px 0; }
+            .top-bar { display: none; }
+            .header-wrapper { top: 0; padding: 8px 0; }
+            .header { border-radius: 40px; padding: 0 16px; }
+            .header-inner { padding: 8px 0; }
             .nav {
                 position: fixed;
-                top: 84px; left: 0; right: 0;
+                top: 60px; left: 0; right: 0;
                 background: var(--ivory);
                 flex-direction: column;
                 padding: 24px; gap: 4px;
@@ -1561,8 +1983,9 @@
                 transform: translateY(-150%);
                 transition: transform 0.4s var(--ease);
                 z-index: 999;
-                max-height: calc(100vh - 84px);
+                max-height: calc(100vh - 60px);
                 overflow-y: auto;
+                border-radius: 0 0 var(--r-lg) var(--r-lg);
             }
             .nav.open { transform: translateY(0); }
             .nav a {
@@ -1575,12 +1998,13 @@
             html[lang="ur"] .nav a,
             body.urdu-mode .nav a { text-align: right; }
             .nav a.active::after { display: none; }
-            .nav a.active { background: var(--leaf-mist); }
+            .nav a.active { background: var(--leaf-mist); color: var(--forest); }
             .menu-toggle { display: block; }
             .header-actions .btn-whatsapp { display: none; }
-            .logo-text h1 { font-size: 18px; }
-            .logo-text span { font-size: 8px; letter-spacing: 3px; }
-            .logo-mark { width: 44px; height: 44px; font-size: 18px; }
+            .logo-text h1 { font-size: 17px; }
+            .logo-text span { font-size: 7px; letter-spacing: 3px; }
+            .logo-image { height: 40px !important; }
+            .header-order-btn { padding: 10px 18px; font-size: 11px; }
             
             .hero { min-height: auto; padding: 100px 0 60px; }
             .hero h1 { font-size: 2.2rem; }
@@ -1604,9 +2028,10 @@
             .story-values { grid-template-columns: 1fr; gap: 14px; }
             
             .feature-panel { padding: 80px 0; }
-            .feature-item-row { padding: 20px 0; gap: 16px; }
-            .feature-item-icon { width: 42px; height: 42px; font-size: 16px; }
+            .feature-item-row { padding: 18px 18px; gap: 16px; }
+            .feature-item-icon { width: 44px; height: 44px; font-size: 17px; }
             .feature-item-content h4 { font-size: 16px; }
+            .feature-item-content p { font-size: 13px; }
             
             .products-grid { grid-template-columns: 1fr; }
             .products-toolbar { flex-direction: column; align-items: stretch; }
@@ -1614,6 +2039,11 @@
             .gallery-masonry { column-count: 1; }
             .facilities-grid { grid-template-columns: 1fr; }
             .contact-form-box { padding: 28px 22px; }
+
+            .govt-section { padding: 45px 0; }
+            .govt-logos { gap: 36px; }
+            .govt-logo-item img { height: 70px; }
+            .govt-logo-item span { font-size: 10px; }
             
             .footer { padding: 60px 0 24px; }
             .footer-grid { grid-template-columns: 1fr; gap: 36px; text-align: left; }
@@ -1634,6 +2064,8 @@
             .display { font-size: 1.75rem; }
             .btn { padding: 13px 24px; font-size: 12px; }
             .btn-lg { padding: 15px 28px; font-size: 13px; }
+            .govt-logos { gap: 24px; }
+            .govt-logo-item img { height: 60px; }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -1644,541 +2076,73 @@
                 scroll-behavior: auto !important;
             }
         }
-        /* =========================================================
-           URDU MODE FIXES — Prevent content overlap with announcement strip
-           ========================================================= */
-
-        /* When announcement is visible, push content down (Urdu & English) */
-        body:has(.announcement.show) .hero,
-        body:has(.announcement.show) .page.active {
-            padding-top: 0;
-        }
-
-        /* When announcement visible + scrolled, header + announcement total height is ~128px */
-        body:has(.announcement.show) .hero {
-            padding-top: 128px;
-        }
-
-        body:has(.announcement.show) .hero-inner {
-            padding-top: 60px;
-        }
-
-        /* Urdu mode: Extra space because Nastaliq has tall ascenders/descenders */
-        html[lang="ur"] .hero,
-        body.urdu-mode .hero {
-            padding-top: 160px;
-            min-height: auto;
-        }
-
-        html[lang="ur"] .hero-inner,
-        body.urdu-mode .hero-inner {
-            padding-top: 40px;
-            padding-bottom: 100px;
-        }
-
-        /* Urdu headings need more breathing room */
-        html[lang="ur"] .hero h1,
-        body.urdu-mode .hero h1 {
-            margin-top: 20px;
-            margin-bottom: 40px;
-            line-height: 1.6;
-        }
-
-        html[lang="ur"] .hero .eyebrow,
-        body.urdu-mode .hero .eyebrow {
-            margin-bottom: 30px;
-            line-height: 1.8;
-        }
-
-        html[lang="ur"] .hero-desc,
-        body.urdu-mode .hero-desc {
-            margin-bottom: 50px;
-            line-height: 2.4;
-        }
-
-        /* Hero meta list — Urdu ke liye extra gap */
-        html[lang="ur"] .hero-meta,
-        body.urdu-mode .hero-meta {
-            gap: 60px;
-            margin-top: 20px;
-        }
-
-        html[lang="ur"] .hero-meta-item .num,
-        body.urdu-mode .hero-meta-item .num {
-            line-height: 1.4;
-            margin-bottom: 10px;
-        }
-
-        html[lang="ur"] .hero-meta-item .lbl,
-        body.urdu-mode .hero-meta-item .lbl {
-            line-height: 1.8;
-        }
-
-        /* Announcement strip position fix for Urdu mode */
-        html[lang="ur"] .announcement,
-        body.urdu-mode .announcement {
-            top: 84px;
-        }
-
-        /* Urdu mode: section spacing (headings need more top space) */
-        html[lang="ur"] .section,
-        body.urdu-mode .section {
-            padding-top: 130px;
-        }
-
-        html[lang="ur"] .section-head,
-        body.urdu-mode .section-head {
-            margin-bottom: 70px;
-        }
-
-        html[lang="ur"] .section-head .display,
-        body.urdu-mode .section-head .display {
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-
-        html[lang="ur"] .section-head p,
-        body.urdu-mode .section-head p {
-            line-height: 2.2;
-        }
-
-        /* Story section Urdu */
-        html[lang="ur"] .story-content .display,
-        body.urdu-mode .story-content .display {
-            line-height: 1.6;
-            margin-bottom: 32px;
-        }
-
-        html[lang="ur"] .story-content p,
-        body.urdu-mode .story-content p {
-            line-height: 2.4;
-            margin-bottom: 26px;
-        }
-
-        /* Feature panel Urdu */
-        html[lang="ur"] .feature-panel,
-        body.urdu-mode .feature-panel {
-            padding: 140px 0;
-        }
-
-        html[lang="ur"] .feature-panel .display,
-        body.urdu-mode .feature-panel .display {
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-
-        html[lang="ur"] .feature-item-row,
-        body.urdu-mode .feature-item-row {
-            padding: 32px 0;
-        }
-
-        html[lang="ur"] .feature-item-content h4,
-        body.urdu-mode .feature-item-content h4 {
-            line-height: 1.8;
-            margin-bottom: 12px;
-        }
-
-        html[lang="ur"] .feature-item-content p,
-        body.urdu-mode .feature-item-content p {
-            line-height: 2.2;
-        }
-
-        /* Products Urdu */
-        html[lang="ur"] .product-body h3,
-        body.urdu-mode .product-body h3 {
-            line-height: 1.8;
-            margin-bottom: 14px;
-        }
-
-        html[lang="ur"] .product-body p,
-        body.urdu-mode .product-body p {
-            line-height: 2.2;
-        }
-
-        /* Facilities Urdu */
-        html[lang="ur"] .facility-card h3,
-        body.urdu-mode .facility-card h3 {
-            line-height: 1.8;
-            margin-bottom: 16px;
-        }
-
-        html[lang="ur"] .facility-card p,
-        body.urdu-mode .facility-card p {
-            line-height: 2.2;
-        }
-
-        /* Footer Urdu */
-        html[lang="ur"] .footer,
-        body.urdu-mode .footer {
-            padding: 120px 0 40px;
-        }
-
-        html[lang="ur"] .footer-brand h3,
-        body.urdu-mode .footer-brand h3 {
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        html[lang="ur"] .footer-brand p,
-        body.urdu-mode .footer-brand p {
-            line-height: 2.2;
-            margin-bottom: 30px;
-        }
-
-        html[lang="ur"] .footer-col h4,
-        body.urdu-mode .footer-col h4 {
-            line-height: 1.8;
-            margin-bottom: 28px;
-        }
-
-        html[lang="ur"] .footer-col a,
-        body.urdu-mode .footer-col a {
-            line-height: 2;
-            margin-bottom: 16px;
-        }
-
-        /* Contact page Urdu */
-        html[lang="ur"] .contact-info-item h4,
-        body.urdu-mode .contact-info-item h4 {
-            line-height: 1.8;
-            margin-bottom: 10px;
-        }
-
-        html[lang="ur"] .contact-info-item p,
-        body.urdu-mode .contact-info-item p {
-            line-height: 2;
-        }
-
-        /* Mobile Urdu fixes */
-        @media (max-width: 768px) {
-            html[lang="ur"] .hero,
-            body.urdu-mode .hero {
-                padding-top: 140px;
-            }
-            
-            html[lang="ur"] .hero h1,
-            body.urdu-mode .hero h1 {
-                font-size: 2rem;
-                line-height: 1.7;
-            }
-            
-            html[lang="ur"] .hero-desc,
-            body.urdu-mode .hero-desc {
-                line-height: 2.4;
-                font-size: 15px;
-            }
-            
-            html[lang="ur"] .section,
-            body.urdu-mode .section {
-                padding-top: 90px;
-            }
-            
-            html[lang="ur"] .section-head,
-            body.urdu-mode .section-head {
-                margin-bottom: 50px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            html[lang="ur"] .hero,
-            body.urdu-mode .hero {
-                padding-top: 130px;
-            }
-            
-            html[lang="ur"] .hero h1,
-            body.urdu-mode .hero h1 {
-                font-size: 1.7rem;
-            }
-        }
-        /* =========================================================
-           CRITICAL FIX: Announcement strip MUST touch the header
-           No gap, no overlap — perfectly seamless
-           ========================================================= */
-
-        /* Base header state — measure the height and match it */
-        .header {
-            min-height: 80px;
-        }
-
-        /* Announcement strip — sits directly below header */
-        .announcement {
-            top: 80px !important;   /* Match header height */
-            height: 38px !important;
-            z-index: 999;
-        }
-
-        /* When header scrolls (becomes smaller), strip follows */
-        .header.scrolled + .announcement,
-        .header.scrolled ~ .announcement {
-            top: 68px !important;   /* Scrolled header height */
-        }
-
-        /* Hero starts BELOW the announcement strip */
-        .hero {
-            padding-top: calc(80px + 38px) !important;   /* Header + Strip */
-        }
-
-        html[lang="ur"] .hero,
-        body.urdu-mode .hero {
-            padding-top: calc(80px + 38px) !important;
-        }
-
-        /* Mobile responsive */
-        @media (max-width: 992px) {
-            .header { min-height: 72px; }
-            .announcement {
-                top: 72px !important;
-                height: 34px !important;
-            }
-            .header.scrolled + .announcement,
-            .header.scrolled ~ .announcement {
-                top: 62px !important;
-            }
-            .hero {
-                padding-top: calc(72px + 34px) !important;
-            }
-            html[lang="ur"] .hero,
-            body.urdu-mode .hero {
-                padding-top: calc(72px + 34px) !important;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .header { min-height: 66px; }
-            .announcement {
-                top: 66px !important;
-                height: 32px !important;
-            }
-            .header.scrolled + .announcement,
-            .header.scrolled ~ .announcement {
-                top: 58px !important;
-            }
-            .hero {
-                padding-top: calc(66px + 32px) !important;
-            }
-            html[lang="ur"] .hero,
-            body.urdu-mode .hero {
-                padding-top: calc(66px + 32px) !important;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .header { min-height: 60px; }
-            .announcement {
-                top: 60px !important;
-                height: 30px !important;
-            }
-            .header.scrolled + .announcement,
-            .header.scrolled ~ .announcement {
-                top: 52px !important;
-            }
-            .hero {
-                padding-top: calc(60px + 30px) !important;
-            }
-            html[lang="ur"] .hero,
-            body.urdu-mode .hero {
-                padding-top: calc(60px + 30px) !important;
-            }
-        }
-
-        /* Urdu mode — strip ki height thodi barhti hai */
-        html[lang="ur"] .announcement,
-        body.urdu-mode .announcement {
-            height: 40px !important;
-        }
-        html[lang="ur"] .hero,
-        body.urdu-mode .hero {
-            padding-top: calc(80px + 40px) !important;
-        }
-
-        @media (max-width: 992px) {
-            html[lang="ur"] .announcement,
-            body.urdu-mode .announcement {
-                height: 36px !important;
-            }
-            html[lang="ur"] .hero,
-            body.urdu-mode .hero {
-                padding-top: calc(72px + 36px) !important;
-            }
-        }
-
-        @media (max-width: 768px) {
-            html[lang="ur"] .announcement,
-            body.urdu-mode .announcement {
-                height: 34px !important;
-            }
-            html[lang="ur"] .hero,
-            body.urdu-mode .hero {
-                padding-top: calc(66px + 34px) !important;
-            }
-        }
-
-        /* =========================================================
-           WATERMARK BACKGROUNDS FOR SECTIONS (p.png, h.png, f.png)
-           ========================================================= */
-
-        /* Facilities Section — p.png watermark */
-        .facilities-section {
-            position: relative;
-            background: var(--forest-deep);
-            color: var(--ivory);
-            overflow: hidden;
-        }
-        .facilities-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('p.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0.08;
-            z-index: 0;
-            pointer-events: none;
-        }
-        .facilities-section .container {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Products Section — h.png watermark */
-        .products-section {
-            position: relative;
-            background: var(--ivory-warm);
-            overflow: hidden;
-        }
-        .products-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('h.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0.06;
-            z-index: 0;
-            pointer-events: none;
-        }
-        .products-section .container {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Gallery Section — f.png watermark */
-        .gallery-section {
-            position: relative;
-            background: var(--ivory);
-            overflow: hidden;
-        }
-        .gallery-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0.06;
-            z-index: 0;
-            pointer-events: none;
-        }
-        .gallery-section .container {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* =========================================================
-           CTA Section — f.png watermark
-           ========================================================= */
-        .cta-section {
-            position: relative;
-            background: var(--forest-deep);
-            padding: 100px 0;
-            text-align: center;
-            overflow: hidden;
-        }
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('f.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0.08;
-            z-index: 0;
-            pointer-events: none;
-        }
-        .cta-section .container {
-            position: relative;
-            z-index: 2;
-        }
     </style>
 </head>
 <body>
 
-<!-- Announcement Strip -->
-<div class="announcement" id="announcement">
-    <div class="announcement-track" id="announcementTrack">
-        <span>
-            <span data-i18n="ann_1">Daily Fresh Dairy</span>
-            <span data-i18n="ann_2">Pure Milk</span>
-            <span data-i18n="ann_3">Farm Fresh</span>
-        
-            <span data-i18n="ann_6">Organic Products</span>
-            <span data-i18n="ann_7">Morning Delivery</span>
-            <span data-i18n="ann_1">Daily Fresh Dairy</span>
-            <span data-i18n="ann_2">Pure Milk</span>
-            <span data-i18n="ann_3">Farm Fresh</span>
-        
-            <span data-i18n="ann_6">Organic Products</span>
-            <span data-i18n="ann_7">Morning Delivery</span>
-        </span>
+<!-- =========================================================
+     TOP BAR — Green strip
+     ========================================================= -->
+<div class="top-bar">
+    <div class="container">
+        <div class="top-bar-left">
+            <span class="tagline"><i class="fas fa-leaf"></i> Pure Milk</span>
+            <span class="divider"></span>
+            <span class="tagline">Healthy Life</span>
+            <span class="divider"></span>
+            <span class="tagline">From Our Farm to Your Home</span>
+        </div>
+        <div class="top-bar-right">
+            <div class="social-icons">
+                <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/923349999114" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <span class="divider"></span>
+            <span class="location">
+                <i class="fas fa-map-marker-alt"></i>
+                Ganjianwali Kalan, P.O. Khas, Ugoki, Sialkot
+            </span>
+        </div>
     </div>
 </div>
 
-<!-- Header -->
-<header class="header" id="header">
-    <div class="container header-inner">
-        <div class="logo" onclick="go('home')">
-            <!-- Using a placeholder logo image path - replace with your actual logo -->
-            <img src="logo.png" alt="Daily Fresh Dairy Logo" class="logo-image">
-            <div class="logo-text">
-                <h1 data-i18n="logo_name">Daily Fresh</h1>
-                <span data-i18n="logo_sub">Dairy · Sialkot</span>
+<!-- =========================================================
+     FLOATING CURVED HEADER
+     ========================================================= -->
+<div class="header-wrapper" id="headerWrapper">
+    <div class="container">
+        <header class="header" id="header">
+            <div class="header-inner">
+                <div class="logo" onclick="go('home')">
+                    <img src="logo.png" alt="Daily Fresh Dairy Logo" class="logo-image">
+                    <div class="logo-text">
+                        <h1 data-i18n="logo_name">Daily Fresh</h1>
+                        <span data-i18n="logo_sub">Dairy · Sialkot</span>
+                    </div>
+                </div>
+
+                <nav class="nav" id="navLinks">
+                    <a href="#" class="active" onclick="go('home', event)" data-i18n="nav_home">Home</a>
+                    <a href="#" onclick="go('about', event)" data-i18n="nav_about">About</a>
+                    <a href="#" onclick="go('products', event)" data-i18n="nav_products">Products</a>
+                    <a href="#" onclick="go('facilities', event)" data-i18n="nav_facilities">Facilities</a>
+                    <a href="#" onclick="go('gallery', event)" data-i18n="nav_gallery">Gallery</a>
+                    <a href="#" onclick="go('contact', event)" data-i18n="nav_contact">Contact</a>
+                </nav>
+
+                <div class="header-actions">
+                    <button class="lang-btn" onclick="toggleLang()" id="langBtn">اردو</button>
+                    <button class="header-order-btn" onclick="openWhatsApp()">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span data-i18n="btn_order">Order</span>
+                    </button>
+                    <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+                </div>
             </div>
-        </div>
-
-        <nav class="nav" id="navLinks">
-            <a href="#" class="active" onclick="go('home', event)" data-i18n="nav_home">Home</a>
-            <a href="#" onclick="go('about', event)" data-i18n="nav_about">About</a>
-            <a href="#" onclick="go('products', event)" data-i18n="nav_products">Products</a>
-            <a href="#" onclick="go('facilities', event)" data-i18n="nav_facilities">Facilities</a>
-            <a href="#" onclick="go('gallery', event)" data-i18n="nav_gallery">Gallery</a>
-            <a href="#" onclick="go('contact', event)" data-i18n="nav_contact">Contact</a>
-        </nav>
-
-        <div class="header-actions">
-            <button class="lang-btn" onclick="toggleLang()" id="langBtn">اردو</button>
-            <button class="btn btn-whatsapp btn-sm" onclick="openWhatsApp()">
-                <i class="fab fa-whatsapp"></i> <span data-i18n="btn_order">Order</span>
-            </button>
-            <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
-        </div>
+        </header>
     </div>
-</header>
+</div>
 
 <!-- =========================================================
      HOME PAGE
@@ -2281,8 +2245,17 @@
         </div>
     </section>
 
-    <!-- DEEP GREEN FEATURE PANEL -->
+    <!-- =========================================================
+         FEATURE PANEL — ENHANCED & MORE ATTRACTIVE
+         ========================================================= -->
     <section class="feature-panel">
+        <div class="leaf-texture"></div>
+
+        <i class="fas fa-leaf deco-leaf deco-leaf-1"></i>
+        <i class="fas fa-seedling deco-leaf deco-leaf-2"></i>
+        <i class="fas fa-leaf deco-leaf deco-leaf-3"></i>
+        <i class="fas fa-seedling deco-leaf deco-leaf-4"></i>
+
         <div class="container">
             <div class="feature-panel-grid">
                 <div>
@@ -2378,6 +2351,32 @@
         </div>
     </section>
 
+    <!-- =========================================================
+         SPONSORED BY / GOVERNMENT SECTION — CLEAN LOGO ROW
+         ========================================================= -->
+    <section class="govt-section">
+        <div class="container">
+            <!-- Small heading line -->
+            <div class="govt-label" data-i18n="govt_label">Registered & Verified By</div>
+
+            <!-- Three Official Logos -->
+            <div class="govt-logos">
+                <div class="govt-logo-item">
+                    <img src="govt-punjab.png" alt="Government of Punjab" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2748%27 fill=%27%231B3A2A%27/%3E%3Ctext x=%2750%27 y=%2760%27 font-family=%27Arial%27 font-size=%2722%27 fill=%27%23FAF7F0%27 text-anchor=%27middle%27%3EGOP%3C/text%3E%3C/svg%3E'">
+                    <span data-i18n="govt_1_short">Govt. of Punjab</span>
+                </div>
+                <div class="govt-logo-item">
+                    <img src="logo1.png" alt="Livestock & Dairy Development" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2748%27 fill=%27%232D5A3F%27/%3E%3Ctext x=%2750%27 y=%2760%27 font-family=%27Arial%27 font-size=%2718%27 fill=%27%23FAF7F0%27 text-anchor=%27middle%27%3ELDD%3C/text%3E%3C/svg%3E'">
+                    <span data-i18n="govt_2_short">Livestock & Dairy</span>
+                </div>
+                <div class="govt-logo-item">
+                    <img src="logo3.png" alt="Livestock Farm Registration" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2748%27 fill=%27%234A8B5C%27/%3E%3Ctext x=%2750%27 y=%2760%27 font-family=%27Arial%27 font-size=%2720%27 fill=%27%23FAF7F0%27 text-anchor=%27middle%27%3EFARM%3C/text%3E%3C/svg%3E'">
+                    <span data-i18n="govt_3_short">Farm Registration</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA -->
     <section class="cta-section">
         <div class="container">
@@ -2452,7 +2451,7 @@
      PRODUCTS PAGE
      ========================================================= -->
 <div class="page" id="page-products">
-    <section class="section" style="padding-top: 160px;">
+    <section class="section products-section" style="padding-top: 160px;">
         <div class="container">
             <div class="section-head center">
                 <div class="eyebrow" data-i18n="prod_page_eyebrow">Our Products</div>
@@ -2955,6 +2954,11 @@ const TRANSLATIONS = {
         gal_page_eyebrow: "Farm Gallery",
         gal_page_title: "A Glimpse Into Our Farm.",
         gal_page_desc: "Moments from our daily life — the animals, the land, and the people who make it all happen.",
+        // Government / Sponsored By
+        govt_label: "Registered & Verified By",
+        govt_1_short: "Govt. of Punjab",
+        govt_2_short: "Livestock & Dairy",
+        govt_3_short: "Farm Registration",
         // CTA
         cta_eyebrow: "Ready to Order?",
         cta_title: "Let's Bring Freshness Home.",
@@ -3128,6 +3132,11 @@ const TRANSLATIONS = {
         gal_page_eyebrow: "فارم گیلری",
         gal_page_title: "ہمارے فارم کی ایک جھلک۔",
         gal_page_desc: "ہماری روزمرہ زندگی کے لمحات — جانور، زمین، اور وہ لوگ جو یہ سب ممکن بناتے ہیں۔",
+        // Government / Sponsored By
+        govt_label: "رجسٹرڈ و تصدیق شدہ از",
+        govt_1_short: "حکومتِ پنجاب",
+        govt_2_short: "لائیو اسٹاک و ڈیری",
+        govt_3_short: "فارم رجسٹریشن",
         // CTA
         cta_eyebrow: "آرڈر دینے کے لیے تیار؟",
         cta_title: "آئیے تازگی گھر لائیں۔",
@@ -3268,9 +3277,6 @@ const GALLERY = [
     { src: "https://images.unsplash.com/photo-1546445317-29f4545e9d53?q=80&w=800&auto=format&fit=crop", caption: "Farm life — illustrative placeholder", caption_ur: "فارم کی زندگی — عکاسی مثال" }
 ];
 
-/* =========================================================
-   STATE
-   ========================================================= */
 let enquiryList = [];
 let currentPage = 'home';
 let currentFilter = 'All';
@@ -3278,9 +3284,6 @@ let currentLang = 'en';
 let adminLoggedIn = false;
 let editingProductId = null;
 
-/* =========================================================
-   LANGUAGE
-   ========================================================= */
 function setLanguage(lang) {
     currentLang = lang;
     const html = document.documentElement;
@@ -3300,11 +3303,9 @@ function setLanguage(lang) {
         localStorage.setItem('dfd-lang', 'en');
     }
     
-    // Translate all elements with data-i18n
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (TRANSLATIONS[lang] && TRANSLATIONS[lang][key]) {
-            // Handle HTML content (for <br> tags)
             if (TRANSLATIONS[lang][key].includes('<br>')) {
                 el.innerHTML = TRANSLATIONS[lang][key];
             } else {
@@ -3313,22 +3314,13 @@ function setLanguage(lang) {
         }
     });
     
-    // Update search placeholder
     const searchInput = document.getElementById('productSearch');
-    if (searchInput) {
-        searchInput.placeholder = TRANSLATIONS[lang].search_placeholder;
-    }
+    if (searchInput) searchInput.placeholder = TRANSLATIONS[lang].search_placeholder;
     
-    // Re-render dynamic content
-    if (currentPage === 'home') {
-        renderHomeProducts();
-        renderHomeFacilities();
-        renderHomeGallery();
-    }
+    if (currentPage === 'home') { renderHomeProducts(); renderHomeFacilities(); renderHomeGallery(); }
     if (currentPage === 'products') renderAllProducts();
     if (currentPage === 'facilities') renderAllFacilities();
     if (currentPage === 'gallery') renderAllGallery();
-    
     updateFilterPills();
 }
 
@@ -3338,53 +3330,30 @@ function toggleLang() {
 }
 window.toggleLang = toggleLang;
 
-/* =========================================================
-   STORAGE
-   ========================================================= */
 function loadData() {
     try {
-        const storedProducts = localStorage.getItem('dfd-products');
-        if (storedProducts) PRODUCTS = JSON.parse(storedProducts);
-        const storedEnquiries = localStorage.getItem('dfd-enquiries');
-        if (storedEnquiries) enquiryList = JSON.parse(storedEnquiries);
-        const storedAdmin = localStorage.getItem('dfd-admin');
-        if (storedAdmin === 'true') adminLoggedIn = true;
-        const storedLang = localStorage.getItem('dfd-lang');
-        if (storedLang) currentLang = storedLang;
-    } catch(e) { console.warn('Storage error', e); }
+        const s = localStorage.getItem('dfd-products'); if (s) PRODUCTS = JSON.parse(s);
+        const e = localStorage.getItem('dfd-enquiries'); if (e) enquiryList = JSON.parse(e);
+        const a = localStorage.getItem('dfd-admin'); if (a === 'true') adminLoggedIn = true;
+        const l = localStorage.getItem('dfd-lang'); if (l) currentLang = l;
+    } catch(e) {}
 }
-function saveProducts() {
-    try { localStorage.setItem('dfd-products', JSON.stringify(PRODUCTS)); } catch(e) {}
-}
-function saveEnquiries() {
-    try { localStorage.setItem('dfd-enquiries', JSON.stringify(enquiryList)); } catch(e) {}
-}
+function saveProducts() { try { localStorage.setItem('dfd-products', JSON.stringify(PRODUCTS)); } catch(e) {} }
+function saveEnquiries() { try { localStorage.setItem('dfd-enquiries', JSON.stringify(enquiryList)); } catch(e) {} }
 
-/* =========================================================
-   NAVIGATION
-   ========================================================= */
 function go(page, event) {
     if (event) event.preventDefault();
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     const target = document.getElementById('page-' + page);
     if (target) target.classList.add('active');
     currentPage = page;
-    
     document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
     const navLinks = document.querySelectorAll('.nav a');
     const pageMap = { 'home': 0, 'about': 1, 'products': 2, 'facilities': 3, 'gallery': 4, 'contact': 5 };
-    if (pageMap[page] !== undefined && navLinks[pageMap[page]]) {
-        navLinks[pageMap[page]].classList.add('active');
-    }
-    
+    if (pageMap[page] !== undefined && navLinks[pageMap[page]]) navLinks[pageMap[page]].classList.add('active');
     document.getElementById('navLinks').classList.remove('open');
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    
-    if (page === 'home') {
-        renderHomeProducts();
-        renderHomeFacilities();
-        renderHomeGallery();
-    }
+    if (page === 'home') { renderHomeProducts(); renderHomeFacilities(); renderHomeGallery(); }
     if (page === 'products') renderAllProducts();
     if (page === 'facilities') renderAllFacilities();
     if (page === 'gallery') renderAllGallery();
@@ -3392,14 +3361,9 @@ function go(page, event) {
 }
 window.go = go;
 
-function toggleMenu() {
-    document.getElementById('navLinks').classList.toggle('open');
-}
+function toggleMenu() { document.getElementById('navLinks').classList.toggle('open'); }
 window.toggleMenu = toggleMenu;
 
-/* =========================================================
-   RENDER PRODUCTS
-   ========================================================= */
 function createProductCard(p) {
     const t = TRANSLATIONS[currentLang];
     const name = currentLang === 'ur' && p.name_ur ? p.name_ur : p.name;
@@ -3409,7 +3373,6 @@ function createProductCard(p) {
     const unit = currentLang === 'ur' && p.unit_ur ? p.unit_ur : p.unit;
     const tag = currentLang === 'ur' && p.tag_ur ? p.tag_ur : p.tag;
     const tagClass = (p.tag === 'Premium' || p.tag_ur === 'پریمیم') ? 'gold' : '';
-    
     return `
         <div class="product-card">
             <div class="product-image">
@@ -3422,45 +3385,26 @@ function createProductCard(p) {
                 <p>${desc}</p>
                 <div class="product-footer">
                     <div class="product-price">${price} <span>${unit ? '/ ' + unit : ''}</span></div>
-                    <button class="btn btn-whatsapp btn-sm" onclick="addToEnquiry(${p.id})">
-                        <i class="fab fa-whatsapp"></i> ${t.btn_enquire}
-                    </button>
+                    <button class="btn btn-whatsapp btn-sm" onclick="addToEnquiry(${p.id})"><i class="fab fa-whatsapp"></i> ${t.btn_enquire}</button>
                 </div>
             </div>
-        </div>
-    `;
+        </div>`;
 }
 
-function renderHomeProducts() {
-    const grid = document.getElementById('homeProducts');
-    if (!grid) return;
-    grid.innerHTML = PRODUCTS.slice(0, 3).map(p => createProductCard(p)).join('');
-}
+function renderHomeProducts() { const g = document.getElementById('homeProducts'); if (g) g.innerHTML = PRODUCTS.slice(0, 3).map(p => createProductCard(p)).join(''); }
 
 function renderAllProducts() {
     const grid = document.getElementById('allProducts');
     if (!grid) return;
     const t = TRANSLATIONS[currentLang];
-    
     const searchTerm = (document.getElementById('productSearch')?.value || '').toLowerCase();
     const filtered = PRODUCTS.filter(p => {
         const matchesCat = currentFilter === 'All' || p.category === currentFilter;
-        const matchesSearch = !searchTerm || 
-            p.name.toLowerCase().includes(searchTerm) || 
-            p.category.toLowerCase().includes(searchTerm) ||
-            (p.name_ur && p.name_ur.includes(searchTerm)) ||
-            (p.category_ur && p.category_ur.includes(searchTerm));
+        const matchesSearch = !searchTerm || p.name.toLowerCase().includes(searchTerm) || p.category.toLowerCase().includes(searchTerm) || (p.name_ur && p.name_ur.includes(searchTerm)) || (p.category_ur && p.category_ur.includes(searchTerm));
         return matchesCat && matchesSearch;
     });
-    
     if (filtered.length === 0) {
-        grid.innerHTML = `
-            <div class="empty-state">
-                <i class="fas fa-search"></i>
-                <h4>${t.no_products}</h4>
-                <p>${t.no_products_sub}</p>
-            </div>
-        `;
+        grid.innerHTML = `<div class="empty-state"><i class="fas fa-search"></i><h4>${t.no_products}</h4><p>${t.no_products_sub}</p></div>`;
     } else {
         grid.innerHTML = filtered.map(p => createProductCard(p)).join('');
     }
@@ -3475,129 +3419,58 @@ function updateFilterPills() {
     const cats = ['All', ...new Set(PRODUCTS.map(p => p.category))];
     container.innerHTML = cats.map(c => {
         let label = c;
-        if (c === 'All') {
-            label = t.filter_all;
-        } else {
+        if (c === 'All') { label = t.filter_all; }
+        else {
             const p = PRODUCTS.find(x => x.category === c);
-            if (currentLang === 'ur' && p && p.category_ur) {
-                label = p.category_ur;
-            } else {
-                // Get English category for other products
-                const enP = PRODUCTS.find(x => x.category === c);
-                label = enP ? enP.category : c;
-            }
+            if (currentLang === 'ur' && p && p.category_ur) label = p.category_ur;
+            else { const enP = PRODUCTS.find(x => x.category === c); label = enP ? enP.category : c; }
         }
         return `<button class="filter-pill ${c === currentFilter ? 'active' : ''}" onclick="setFilter('${c}')">${label}</button>`;
     }).join('');
 }
 
-function setFilter(cat) {
-    currentFilter = cat;
-    renderAllProducts();
-}
+function setFilter(cat) { currentFilter = cat; renderAllProducts(); }
 window.setFilter = setFilter;
-
-function filterProducts() {
-    renderAllProducts();
-}
+function filterProducts() { renderAllProducts(); }
 window.filterProducts = filterProducts;
 
-/* =========================================================
-   RENDER FACILITIES
-   ========================================================= */
 function createFacilityCard(f) {
     const t = TRANSLATIONS[currentLang];
     const name = currentLang === 'ur' && f.name_ur ? f.name_ur : f.name;
     const desc = currentLang === 'ur' && f.desc_ur ? f.desc_ur : f.desc;
     const status = f.status === 'confirmed' ? t.status_confirmed : t.status_pending;
-    
     return `
         <div class="facility-card">
             <div class="facility-icon"><i class="fas ${f.icon}"></i></div>
             <h3>${name}</h3>
             <p>${desc}</p>
-            <div class="facility-status ${f.status === 'pending' ? 'pending' : ''}">
-                <i class="fas ${f.status === 'confirmed' ? 'fa-check-circle' : 'fa-clock'}"></i>
-                ${status}
-            </div>
-        </div>
-    `;
+            <div class="facility-status ${f.status === 'pending' ? 'pending' : ''}"><i class="fas ${f.status === 'confirmed' ? 'fa-check-circle' : 'fa-clock'}"></i> ${status}</div>
+        </div>`;
 }
 
-function renderHomeFacilities() {
-    const grid = document.getElementById('homeFacilities');
-    if (!grid) return;
-    grid.innerHTML = FACILITIES.slice(0, 3).map(f => createFacilityCard(f)).join('');
-}
+function renderHomeFacilities() { const g = document.getElementById('homeFacilities'); if (g) g.innerHTML = FACILITIES.slice(0, 3).map(f => createFacilityCard(f)).join(''); }
+function renderAllFacilities() { const g = document.getElementById('allFacilities'); if (g) g.innerHTML = FACILITIES.map(f => createFacilityCard(f)).join(''); }
 
-function renderAllFacilities() {
-    const grid = document.getElementById('allFacilities');
-    if (!grid) return;
-    grid.innerHTML = FACILITIES.map(f => createFacilityCard(f)).join('');
-}
-
-/* =========================================================
-   RENDER GALLERY
-   ========================================================= */
 function createGalleryItem(item) {
     const caption = currentLang === 'ur' && item.caption_ur ? item.caption_ur : item.caption;
-    return `
-        <div class="gallery-item" onclick="openLightbox('${item.src}')">
-            <img src="${item.src}" alt="${caption}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1560493676-04071c5f467b?q=80&w=600&auto=format&fit=crop'">
-            <div class="gallery-caption">${caption}</div>
-        </div>
-    `;
+    return `<div class="gallery-item" onclick="openLightbox('${item.src}')"><img src="${item.src}" alt="${caption}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1560493676-04071c5f467b?q=80&w=600&auto=format&fit=crop'"><div class="gallery-caption">${caption}</div></div>`;
 }
 
-function renderHomeGallery() {
-    const grid = document.getElementById('homeGallery');
-    if (!grid) return;
-    grid.innerHTML = GALLERY.slice(0, 5).map(item => createGalleryItem(item)).join('');
-}
+function renderHomeGallery() { const g = document.getElementById('homeGallery'); if (g) g.innerHTML = GALLERY.slice(0, 5).map(item => createGalleryItem(item)).join(''); }
+function renderAllGallery() { const g = document.getElementById('allGallery'); if (g) g.innerHTML = GALLERY.map(item => createGalleryItem(item)).join(''); }
 
-function renderAllGallery() {
-    const grid = document.getElementById('allGallery');
-    if (!grid) return;
-    grid.innerHTML = GALLERY.map(item => createGalleryItem(item)).join('');
-}
-
-function openLightbox(src) {
-    const lb = document.getElementById('lightbox');
-    const img = document.getElementById('lightboxImg');
-    if (lb && img) {
-        img.src = src;
-        lb.classList.add('open');
-        document.body.classList.add('no-scroll');
-    }
-}
+function openLightbox(src) { const lb = document.getElementById('lightbox'); const img = document.getElementById('lightboxImg'); if (lb && img) { img.src = src; lb.classList.add('open'); document.body.classList.add('no-scroll'); } }
 window.openLightbox = openLightbox;
-
-function closeLightbox(e) {
-    if (e && e.target !== e.currentTarget && !e.target.classList.contains('lightbox-close') && !e.target.closest('.lightbox-close')) return;
-    const lb = document.getElementById('lightbox');
-    if (lb) {
-        lb.classList.remove('open');
-        document.body.classList.remove('no-scroll');
-    }
-}
+function closeLightbox(e) { if (e && e.target !== e.currentTarget && !e.target.classList.contains('lightbox-close') && !e.target.closest('.lightbox-close')) return; const lb = document.getElementById('lightbox'); if (lb) { lb.classList.remove('open'); document.body.classList.remove('no-scroll'); } }
 window.closeLightbox = closeLightbox;
 
-/* =========================================================
-   ENQUIRY LIST
-   ========================================================= */
 function addToEnquiry(id) {
     const t = TRANSLATIONS[currentLang];
     const product = PRODUCTS.find(p => p.id === id);
     if (!product) return;
-    
-    if (enquiryList.find(i => i.id === id)) {
-        showToast(t.toast_already);
-        return;
-    }
-    
+    if (enquiryList.find(i => i.id === id)) { showToast(t.toast_already); return; }
     const name = currentLang === 'ur' && product.name_ur ? product.name_ur : product.name;
     const price = currentLang === 'ur' && product.price_ur ? product.price_ur : product.price;
-    
     enquiryList.push({ id: product.id, name, price });
     saveEnquiries();
     updateEnquiryUI();
@@ -3606,12 +3479,7 @@ function addToEnquiry(id) {
 }
 window.addToEnquiry = addToEnquiry;
 
-function removeFromEnquiry(id) {
-    enquiryList = enquiryList.filter(i => i.id !== id);
-    saveEnquiries();
-    updateEnquiryUI();
-    renderDrawer();
-}
+function removeFromEnquiry(id) { enquiryList = enquiryList.filter(i => i.id !== id); saveEnquiries(); updateEnquiryUI(); renderDrawer(); }
 window.removeFromEnquiry = removeFromEnquiry;
 
 function updateEnquiryUI() {
@@ -3619,7 +3487,6 @@ function updateEnquiryUI() {
     const toggle = document.getElementById('enquiryToggle');
     const countEl = document.getElementById('enquiryCount');
     const drawerCountEl = document.getElementById('drawerCount');
-    
     if (countEl) countEl.textContent = count;
     if (drawerCountEl) drawerCountEl.textContent = count;
     if (toggle) toggle.style.display = count > 0 ? 'flex' : 'none';
@@ -3630,31 +3497,12 @@ function renderDrawer() {
     const t = TRANSLATIONS[currentLang];
     if (!body) return;
     if (enquiryList.length === 0) {
-        body.innerHTML = `
-            <div class="drawer-empty">
-                <i class="fas fa-shopping-basket"></i>
-                <p>${t.drawer_empty}</p>
-                <p style="font-size: 12px; margin-top: 8px;">${t.drawer_empty_sub}</p>
-            </div>
-        `;
+        body.innerHTML = `<div class="drawer-empty"><i class="fas fa-shopping-basket"></i><p>${t.drawer_empty}</p><p style="font-size: 12px; margin-top: 8px;">${t.drawer_empty_sub}</p></div>`;
         return;
     }
     body.innerHTML = enquiryList.map(item => {
         const product = PRODUCTS.find(p => p.id === item.id);
-        return `
-            <div class="drawer-item">
-                <div class="drawer-item-img">
-                    <img src="${product?.img || ''}" alt="${item.name}" onerror="this.src='https://images.unsplash.com/photo-1550583724-b2692b85b150?q=80&w=200&auto=format&fit=crop'">
-                </div>
-                <div class="drawer-item-info">
-                    <h4>${item.name}</h4>
-                    <div class="price">${item.price}</div>
-                </div>
-                <div class="drawer-item-remove" onclick="removeFromEnquiry(${item.id})">
-                    <i class="fas fa-trash"></i>
-                </div>
-            </div>
-        `;
+        return `<div class="drawer-item"><div class="drawer-item-img"><img src="${product?.img || ''}" alt="${item.name}" onerror="this.src='https://images.unsplash.com/photo-1550583724-b2692b85b150?q=80&w=200&auto=format&fit=crop'"></div><div class="drawer-item-info"><h4>${item.name}</h4><div class="price">${item.price}</div></div><div class="drawer-item-remove" onclick="removeFromEnquiry(${item.id})"><i class="fas fa-trash"></i></div></div>`;
     }).join('');
 }
 
@@ -3664,49 +3512,29 @@ function toggleDrawer() {
     if (drawer && overlay) {
         drawer.classList.toggle('open');
         overlay.classList.toggle('open');
-        if (drawer.classList.contains('open')) {
-            document.body.classList.add('no-scroll');
-            renderDrawer();
-        } else {
-            document.body.classList.remove('no-scroll');
-        }
+        if (drawer.classList.contains('open')) { document.body.classList.add('no-scroll'); renderDrawer(); }
+        else document.body.classList.remove('no-scroll');
     }
 }
 window.toggleDrawer = toggleDrawer;
 
 function sendEnquiryList() {
     const t = TRANSLATIONS[currentLang];
-    if (enquiryList.length === 0) {
-        showToast(t.toast_empty, true);
-        return;
-    }
+    if (enquiryList.length === 0) { showToast(t.toast_empty, true); return; }
     const message = currentLang === 'ur' 
-        ? `السلام علیکم! میں ڈیلی فریش ڈیری کی درج ذیل ڈیری مصنوعات کے بارے میں پوچھنا چاہتا/چاہتی ہوں:\n\n` +
-          enquiryList.map((item, idx) => `${idx + 1}. ${item.name} — ${item.price}`).join('\n') +
-          `\n\nبراہ کرم دستیابی اور قیمتوں کے بارے میں بتائیں۔ شکریہ!`
-        : `Assalam-o-Alaikum! I'd like to enquire about the following dairy products from Daily Fresh Dairy:\n\n` +
-          enquiryList.map((item, idx) => `${idx + 1}. ${item.name} — ${item.price}`).join('\n') +
-          `\n\nPlease share availability and pricing. Shukriya!`;
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-    window.open(url, '_blank');
+        ? `السلام علیکم! میں ڈیلی فریش ڈیری کی درج ذیل ڈیری مصنوعات کے بارے میں پوچھنا چاہتا/چاہتی ہوں:\n\n` + enquiryList.map((item, idx) => `${idx + 1}. ${item.name} — ${item.price}`).join('\n') + `\n\nبراہ کرم دستیابی اور قیمتوں کے بارے میں بتائیں۔ شکریہ!`
+        : `Assalam-o-Alaikum! I'd like to enquire about the following dairy products from Daily Fresh Dairy:\n\n` + enquiryList.map((item, idx) => `${idx + 1}. ${item.name} — ${item.price}`).join('\n') + `\n\nPlease share availability and pricing. Shukriya!`;
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
     showToast(t.toast_opening_wa);
 }
 window.sendEnquiryList = sendEnquiryList;
 
-/* =========================================================
-   WHATSAPP
-   ========================================================= */
 function openWhatsApp() {
-    const message = currentLang === 'ur'
-        ? `السلام علیکم! میں ڈیلی فریش ڈیری کی مصنوعات کے بارے میں پوچھنا چاہتا/چاہتی ہوں۔`
-        : `Assalam-o-Alaikum! I'd like to enquire about Daily Fresh Dairy products.`;
+    const message = currentLang === 'ur' ? `السلام علیکم! میں ڈیلی فریش ڈیری کی مصنوعات کے بارے میں پوچھنا چاہتا/چاہتی ہوں۔` : `Assalam-o-Alaikum! I'd like to enquire about Daily Fresh Dairy products.`;
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
 }
 window.openWhatsApp = openWhatsApp;
 
-/* =========================================================
-   CONTACT FORM
-   ========================================================= */
 function submitEnquiry(e) {
     e.preventDefault();
     const t = TRANSLATIONS[currentLang];
@@ -3714,30 +3542,18 @@ function submitEnquiry(e) {
     const phone = document.getElementById('cPhone').value.trim();
     const subject = document.getElementById('cSubject').value;
     const message = document.getElementById('cMessage').value.trim();
-    
-    if (!name || !phone || !message) {
-        showToast(t.toast_fill_fields, true);
-        return false;
-    }
-    
+    if (!name || !phone || !message) { showToast(t.toast_fill_fields, true); return false; }
     const enquiries = JSON.parse(localStorage.getItem('dfd-enquiry-messages') || '[]');
     enquiries.push({ id: Date.now(), date: new Date().toISOString(), name, phone, subject, message });
     localStorage.setItem('dfd-enquiry-messages', JSON.stringify(enquiries));
-    
-    const waMessage = currentLang === 'ur'
-        ? `السلام علیکم!\n\n*نام:* ${name}\n*فون:* ${phone}\n*موضوع:* ${subject}\n\n*پیغام:*\n${message}`
-        : `Assalam-o-Alaikum!\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Subject:* ${subject}\n\n*Message:*\n${message}`;
+    const waMessage = currentLang === 'ur' ? `السلام علیکم!\n\n*نام:* ${name}\n*فون:* ${phone}\n*موضوع:* ${subject}\n\n*پیغام:*\n${message}` : `Assalam-o-Alaikum!\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Subject:* ${subject}\n\n*Message:*\n${message}`;
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waMessage)}`, '_blank');
-    
     showToast(t.toast_opening_wa);
     e.target.reset();
     return false;
 }
 window.submitEnquiry = submitEnquiry;
 
-/* =========================================================
-   TOAST
-   ========================================================= */
 let toastTimer;
 function showToast(msg, isError = false) {
     const toast = document.getElementById('toast');
@@ -3751,23 +3567,17 @@ function showToast(msg, isError = false) {
 }
 window.showToast = showToast;
 
-/* =========================================================
-   ADMIN
-   ========================================================= */
 function adminLogin(e) {
     e.preventDefault();
     const t = TRANSLATIONS[currentLang];
     const user = document.getElementById('adminUser').value.trim();
     const pass = document.getElementById('adminPass').value;
-    
     if (user === 'admin' && pass === 'dairy2024') {
         adminLoggedIn = true;
         localStorage.setItem('dfd-admin', 'true');
         renderAdmin();
         showToast(t.toast_welcome);
-    } else {
-        showToast(t.toast_invalid, true);
-    }
+    } else showToast(t.toast_invalid, true);
     return false;
 }
 window.adminLogin = adminLogin;
@@ -3785,14 +3595,10 @@ function renderAdmin() {
     const loginView = document.getElementById('adminLoginView');
     const dashView = document.getElementById('adminDashboardView');
     if (!loginView || !dashView) return;
-    
     if (adminLoggedIn) {
         loginView.style.display = 'none';
         dashView.style.display = 'block';
-        renderAdminStats();
-        renderAdminProducts();
-        renderAdminEnquiries();
-        renderAdminGallery();
+        renderAdminStats(); renderAdminProducts(); renderAdminEnquiries(); renderAdminGallery();
     } else {
         loginView.style.display = 'block';
         dashView.style.display = 'none';
@@ -3821,47 +3627,16 @@ window.switchAdminTab = switchAdminTab;
 function renderAdminProducts() {
     const tbody = document.getElementById('adminProductsTable');
     if (!tbody) return;
-    if (PRODUCTS.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="5"><div class="admin-empty"><i class="fas fa-box-open"></i><p>—</p></div></td></tr>`;
-        return;
-    }
-    tbody.innerHTML = PRODUCTS.map(p => `
-        <tr>
-            <td><img src="${p.img}" alt="${p.name}" onerror="this.src='https://images.unsplash.com/photo-1550583724-b2692b85b150?q=80&w=200&auto=format&fit=crop'"></td>
-            <td><strong>${p.name}</strong><br><span style="font-size: 12px; color: var(--text-soft);">${p.desc?.substring(0, 40) || ''}...</span></td>
-            <td>${p.category}</td>
-            <td>${p.price}${p.unit ? ' / ' + p.unit : ''}</td>
-            <td>
-                <div class="admin-table-actions">
-                    <button class="icon-btn" onclick="openProductModal(${p.id})" title="Edit"><i class="fas fa-edit"></i></button>
-                    <button class="icon-btn danger" onclick="deleteProduct(${p.id})" title="Delete"><i class="fas fa-trash"></i></button>
-                </div>
-            </td>
-        </tr>
-    `).join('');
+    if (PRODUCTS.length === 0) { tbody.innerHTML = `<tr><td colspan="5"><div class="admin-empty"><i class="fas fa-box-open"></i><p>—</p></div></td></tr>`; return; }
+    tbody.innerHTML = PRODUCTS.map(p => `<tr><td><img src="${p.img}" alt="${p.name}" onerror="this.src='https://images.unsplash.com/photo-1550583724-b2692b85b150?q=80&w=200&auto=format&fit=crop'"></td><td><strong>${p.name}</strong><br><span style="font-size: 12px; color: var(--text-soft);">${p.desc?.substring(0, 40) || ''}...</span></td><td>${p.category}</td><td>${p.price}${p.unit ? ' / ' + p.unit : ''}</td><td><div class="admin-table-actions"><button class="icon-btn" onclick="openProductModal(${p.id})" title="Edit"><i class="fas fa-edit"></i></button><button class="icon-btn danger" onclick="deleteProduct(${p.id})" title="Delete"><i class="fas fa-trash"></i></button></div></td></tr>`).join('');
 }
 
 function renderAdminEnquiries() {
     const tbody = document.getElementById('adminEnquiriesTable');
     if (!tbody) return;
     const enquiries = JSON.parse(localStorage.getItem('dfd-enquiry-messages') || '[]');
-    if (enquiries.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="5"><div class="admin-empty"><i class="fas fa-inbox"></i><p>—</p></div></td></tr>`;
-        return;
-    }
-    tbody.innerHTML = enquiries.reverse().map(e => `
-        <tr>
-            <td>${new Date(e.date).toLocaleDateString()}</td>
-            <td>${e.name}</td>
-            <td>${e.phone}</td>
-            <td>${e.subject}</td>
-            <td>
-                <div class="admin-table-actions">
-                    <button class="icon-btn" onclick="viewEnquiry(${e.id})" title="View"><i class="fas fa-eye"></i></button>
-                </div>
-            </td>
-        </tr>
-    `).join('');
+    if (enquiries.length === 0) { tbody.innerHTML = `<tr><td colspan="5"><div class="admin-empty"><i class="fas fa-inbox"></i><p>—</p></div></td></tr>`; return; }
+    tbody.innerHTML = enquiries.reverse().map(e => `<tr><td>${new Date(e.date).toLocaleDateString()}</td><td>${e.name}</td><td>${e.phone}</td><td>${e.subject}</td><td><div class="admin-table-actions"><button class="icon-btn" onclick="viewEnquiry(${e.id})" title="View"><i class="fas fa-eye"></i></button></div></td></tr>`).join('');
 }
 
 function viewEnquiry(id) {
@@ -3885,11 +3660,7 @@ window.clearEnquiries = clearEnquiries;
 function renderAdminGallery() {
     const container = document.getElementById('adminGalleryPreview');
     if (!container) return;
-    container.innerHTML = GALLERY.map(g => `
-        <div style="aspect-ratio: 1; border-radius: 8px; overflow: hidden; background: var(--leaf-mist);">
-            <img src="${g.src}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'">
-        </div>
-    `).join('');
+    container.innerHTML = GALLERY.map(g => `<div style="aspect-ratio: 1; border-radius: 8px; overflow: hidden; background: var(--leaf-mist);"><img src="${g.src}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'"></div>`).join('');
 }
 
 function openProductModal(id) {
@@ -3897,7 +3668,6 @@ function openProductModal(id) {
     editingProductId = id || null;
     const modal = document.getElementById('productModal');
     const title = document.getElementById('productModalTitle');
-    
     if (id) {
         const p = PRODUCTS.find(x => x.id === id);
         if (!p) return;
@@ -3919,7 +3689,6 @@ function openProductModal(id) {
         document.getElementById('pDesc').value = '';
         document.getElementById('editProductId').value = '';
     }
-    
     modal.classList.add('open');
     document.body.classList.add('no-scroll');
 }
@@ -3941,28 +3710,17 @@ function saveProduct(e) {
     const img = document.getElementById('pImage').value.trim() || 'https://images.unsplash.com/photo-1550583724-b2692b85b150?q=80&w=600&auto=format&fit=crop';
     const desc = document.getElementById('pDesc').value.trim();
     const editId = document.getElementById('editProductId').value;
-    
-    if (!name || !category) {
-        showToast(t.toast_fill_fields, true);
-        return false;
-    }
-    
+    if (!name || !category) { showToast(t.toast_fill_fields, true); return false; }
     if (editId) {
         const idx = PRODUCTS.findIndex(p => p.id === parseInt(editId));
-        if (idx > -1) {
-            PRODUCTS[idx] = { ...PRODUCTS[idx], name, category, price, unit, img, desc };
-        }
+        if (idx > -1) PRODUCTS[idx] = { ...PRODUCTS[idx], name, category, price, unit, img, desc };
     } else {
         const newId = PRODUCTS.length ? Math.max(...PRODUCTS.map(p => p.id)) + 1 : 1;
         PRODUCTS.push({ id: newId, name, category, price, unit, img, desc, tag: '' });
     }
-    
     saveProducts();
     closeProductModal();
-    renderAdminProducts();
-    renderAdminStats();
-    renderAllProducts();
-    renderHomeProducts();
+    renderAdminProducts(); renderAdminStats(); renderAllProducts(); renderHomeProducts();
     showToast(t.toast_saved);
     return false;
 }
@@ -3973,10 +3731,7 @@ function deleteProduct(id) {
     if (!confirm(t.confirm_delete)) return;
     PRODUCTS = PRODUCTS.filter(p => p.id !== id);
     saveProducts();
-    renderAdminProducts();
-    renderAdminStats();
-    renderAllProducts();
-    renderHomeProducts();
+    renderAdminProducts(); renderAdminStats(); renderAllProducts(); renderHomeProducts();
     showToast(t.toast_deleted);
 }
 window.deleteProduct = deleteProduct;
@@ -3984,16 +3739,11 @@ window.deleteProduct = deleteProduct;
 function saveSettings() {
     const t = TRANSLATIONS[currentLang];
     const wa = document.getElementById('settingWhatsapp').value.trim();
-    if (wa) {
-        localStorage.setItem('dfd-whatsapp', wa);
-    }
+    if (wa) localStorage.setItem('dfd-whatsapp', wa);
     showToast(t.toast_settings_saved);
 }
 window.saveSettings = saveSettings;
 
-/* =========================================================
-   SCROLL
-   ========================================================= */
 window.addEventListener('scroll', () => {
     const header = document.getElementById('header');
     if (header) header.classList.toggle('scrolled', window.scrollY > 30);
@@ -4002,27 +3752,15 @@ window.addEventListener('scroll', () => {
 });
 
 window.addEventListener('load', () => {
-    setTimeout(() => {
-        document.getElementById('announcement')?.classList.add('show');
-    }, 800);
+    setTimeout(() => { document.getElementById('announcement')?.classList.add('show'); }, 800);
 });
 
-/* =========================================================
-   INIT
-   ========================================================= */
 document.addEventListener('DOMContentLoaded', () => {
     loadData();
     setLanguage(currentLang);
-    renderHomeProducts();
-    renderHomeFacilities();
-    renderHomeGallery();
-    renderAllProducts();
-    renderAllFacilities();
-    renderAllGallery();
-    updateEnquiryUI();
-    renderDrawer();
-    renderAdmin();
-    
+    renderHomeProducts(); renderHomeFacilities(); renderHomeGallery();
+    renderAllProducts(); renderAllFacilities(); renderAllGallery();
+    updateEnquiryUI(); renderDrawer(); renderAdmin();
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             closeLightbox({ target: document.getElementById('lightbox'), currentTarget: document.getElementById('lightbox') });
