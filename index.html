@@ -1425,74 +1425,93 @@
             border-color: rgba(250, 247, 240, 0.15);
         }
 
-               /* =========================================================
-           SPONSORED BY / GOVERNMENT SECTION — TINY FOOTER ROW
+        /* =========================================================
+           SPONSORED BY / GOVERNMENT SECTION — CLEAN LOGO ROW
            ========================================================= */
         .govt-section {
-            background: var(--ivory-warm);
-            padding: 24px 0;
+            background: linear-gradient(135deg, #FAF7F0 0%, #F3EDE0 100%);
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
             border-top: 1px solid rgba(27, 58, 42, 0.06);
             border-bottom: 1px solid rgba(27, 58, 42, 0.06);
         }
         .govt-section .container {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        /* Small heading line */
+        .govt-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            font-family: var(--font-body);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--leaf);
+        }
+        .govt-label::before,
+        .govt-label::after {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: var(--leaf);
+            opacity: 0.5;
+        }
+
+        /* Logo Row */
+        .govt-logos {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 28px;
+            gap: 60px;
             flex-wrap: wrap;
         }
-        .govt-label {
-            font-family: var(--font-body);
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--text-soft);
-            padding-right: 24px;
-            border-right: 1px solid rgba(27, 58, 42, 0.12);
-        }
-        .govt-logos {
+        .govt-logo-item {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 22px;
-            flex-wrap: wrap;
+            gap: 14px;
+            text-align: center;
         }
-        .govt-logos img {
-            height: 34px;
+        .govt-logo-item img {
+            height: 90px;
             width: auto;
-            max-width: 90px;
+            max-width: 140px;
             object-fit: contain;
-            opacity: 0.75;
-            transition: all 0.3s var(--ease);
-            filter: grayscale(0.3);
+            filter: drop-shadow(0 6px 14px rgba(15, 37, 26, 0.08));
+            transition: transform 0.4s var(--ease);
         }
-        .govt-logos img:hover {
-            opacity: 1;
-            filter: grayscale(0);
-            transform: scale(1.06);
+        .govt-logo-item:hover img {
+            transform: translateY(-4px) scale(1.04);
+        }
+        .govt-logo-item span {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-soft);
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         html[lang="ur"] .govt-label,
         body.urdu-mode .govt-label {
             font-family: var(--font-urdu);
             letter-spacing: 0;
-            font-size: 13px;
-            padding-right: 0;
-            padding-left: 24px;
-            border-right: none;
-            border-left: 1px solid rgba(27, 58, 42, 0.12);
+            font-size: 15px;
         }
-
-        @media (max-width: 768px) {
-            .govt-section { padding: 18px 0; }
-            .govt-section .container { gap: 16px; }
-            .govt-label {
-                font-size: 9px;
-                padding-right: 14px;
-                letter-spacing: 1.5px;
-            }
-            .govt-logos { gap: 16px; }
-            .govt-logos img { height: 26px; }
+        html[lang="ur"] .govt-logo-item span,
+        body.urdu-mode .govt-logo-item span {
+            font-family: var(--font-urdu);
+            letter-spacing: 0;
+            font-size: 14px;
+            text-transform: none;
         }
 
         @media (max-width: 768px) {
@@ -2332,16 +2351,28 @@
         </div>
     </section>
 
-       <!-- =========================================================
-         REGISTERED & VERIFIED — COMPACT FOOTER BADGE
+    <!-- =========================================================
+         SPONSORED BY / GOVERNMENT SECTION — CLEAN LOGO ROW
          ========================================================= -->
     <section class="govt-section">
         <div class="container">
-            <div class="govt-label" data-i18n="govt_label">Verified By</div>
+            <!-- Small heading line -->
+            <div class="govt-label" data-i18n="govt_label">Registered & Verified By</div>
+
+            <!-- Three Official Logos -->
             <div class="govt-logos">
-                <img src="govt-punjab.png" alt="Government of Punjab" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2748%27 fill=%27%231B3A2A%27/%3E%3Ctext x=%2750%27 y=%2760%27 font-family=%27Arial%27 font-size=%2722%27 fill=%27%23FAF7F0%27 text-anchor=%27middle%27%3EGOP%3C/text%3E%3C/svg%3E'">
-                <img src="logo1.png" alt="Livestock & Dairy Development" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2748%27 fill=%27%232D5A3F%27/%3E%3Ctext x=%2750%27 y=%2760%27 font-family=%27Arial%27 font-size=%2718%27 fill=%27%23FAF7F0%27 text-anchor=%27middle%27%3ELDD%3C/text%3E%3C/svg%3E'">
-                <img src="logo3.png" alt="Livestock Farm Registration" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2748%27 fill=%27%234A8B5C%27/%3E%3Ctext x=%2750%27 y=%2760%27 font-family=%27Arial%27 font-size=%2720%27 fill=%27%23FAF7F0%27 text-anchor=%27middle%27%3EFARM%3C/text%3E%3C/svg%3E'">
+                <div class="govt-logo-item">
+                    <img src="govt-punjab.png" alt="Government of Punjab" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2748%27 fill=%27%231B3A2A%27/%3E%3Ctext x=%2750%27 y=%2760%27 font-family=%27Arial%27 font-size=%2722%27 fill=%27%23FAF7F0%27 text-anchor=%27middle%27%3EGOP%3C/text%3E%3C/svg%3E'">
+                    <span data-i18n="govt_1_short">Govt. of Punjab</span>
+                </div>
+                <div class="govt-logo-item">
+                    <img src="logo1.png" alt="Livestock & Dairy Development" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2748%27 fill=%27%232D5A3F%27/%3E%3Ctext x=%2750%27 y=%2760%27 font-family=%27Arial%27 font-size=%2718%27 fill=%27%23FAF7F0%27 text-anchor=%27middle%27%3ELDD%3C/text%3E%3C/svg%3E'">
+                    <span data-i18n="govt_2_short">Livestock & Dairy</span>
+                </div>
+                <div class="govt-logo-item">
+                    <img src="logo3.png" alt="Livestock Farm Registration" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2748%27 fill=%27%234A8B5C%27/%3E%3Ctext x=%2750%27 y=%2760%27 font-family=%27Arial%27 font-size=%2720%27 fill=%27%23FAF7F0%27 text-anchor=%27middle%27%3EFARM%3C/text%3E%3C/svg%3E'">
+                    <span data-i18n="govt_3_short">Farm Registration</span>
+                </div>
             </div>
         </div>
     </section>
@@ -2751,7 +2782,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <div data-i18n="footer_copyright">© 2026 Daily Fresh Dairy. All Rights Reserved.</div>
+            <div data-i18n="footer_copyright">© 2024 Daily Fresh Dairy. All Rights Reserved.</div>
             <div data-i18n="footer_made">Made with care in Sialkot, Pakistan</div>
         </div>
     </div>
@@ -3007,7 +3038,7 @@ const TRANSLATIONS = {
         footer_products: "Products",
         footer_contact: "Contact",
         footer_address: "Ganjianwali Kalan, P.O. Khas, Ugoki, Sialkot, Pakistan",
-        footer_copyright: "© 2026 Daily Fresh Dairy. All Rights Reserved.",
+        footer_copyright: "© 2024 Daily Fresh Dairy. All Rights Reserved.",
         footer_made: "Made with care in Sialkot, Pakistan",
         prod_milk: "Fresh Milk", prod_yogurt: "Yogurt", prod_ghee: "Desi Ghee",
         prod_cheese: "Cheese", prod_butter: "Butter",
