@@ -8,7 +8,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
@@ -39,6 +39,7 @@
             --font-display: 'Fraunces', serif;
             --font-body: 'Inter', sans-serif;
             --font-urdu: 'Noto Nastaliq Urdu', serif;
+            --font-elegant: 'Cormorant Garamond', serif;
             --ease: cubic-bezier(0.22, 1, 0.36, 1);
             --ease-slow: cubic-bezier(0.16, 1, 0.3, 1);
             --shadow-xs: 0 1px 3px rgba(15, 37, 26, 0.06);
@@ -1561,7 +1562,9 @@
             z-index: 2;
         }
 
-        /* Contact */
+        /* =========================================================
+           CONTACT SECTION — ELEGANT FONT
+           ========================================================= */
         .contact-section { background: var(--ivory-warm); }
         .contact-grid {
             display: grid;
@@ -1585,19 +1588,22 @@
             font-size: 18px; flex-shrink: 0;
             box-shadow: var(--shadow-xs);
         }
+        /* Elegant font for contact labels */
         .contact-info-item h4 {
-            font-family: var(--font-body);
-            font-size: 12px; font-weight: 600;
-            letter-spacing: 1.5px;
+            font-family: var(--font-elegant);
+            font-size: 14px; font-weight: 600;
+            letter-spacing: 2px;
             text-transform: uppercase;
             color: var(--text-soft);
             margin-bottom: 6px;
         }
+        /* Elegant font for contact info text */
         .contact-info-item p, .contact-info-item a {
-            font-family: var(--font-display);
-            font-size: 17px; font-weight: 500;
+            font-family: var(--font-elegant);
+            font-size: 20px; font-weight: 500;
             color: var(--text-ink);
             line-height: 1.5;
+            letter-spacing: 0.3px;
         }
         .contact-info-item a:hover { color: var(--forest); }
         .contact-form-box {
@@ -1617,15 +1623,20 @@
             font-size: 14px;
             color: var(--text-soft);
             margin-bottom: 32px;
+            font-family: var(--font-elegant);
+            font-size: 17px;
+            letter-spacing: 0.3px;
         }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
         .form-group { margin-bottom: 22px; }
+        /* Elegant font for form labels */
         .form-group label {
             display: block;
-            font-size: 12px; font-weight: 600;
+            font-family: var(--font-elegant);
+            font-size: 14px; font-weight: 600;
             color: var(--text-body);
             margin-bottom: 8px;
-            letter-spacing: 0.5px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
         }
         .form-group input,
@@ -1654,6 +1665,9 @@
             color: var(--text-soft);
             margin-top: 8px;
             display: flex; align-items: center; gap: 6px;
+            font-family: var(--font-elegant);
+            font-size: 15px;
+            letter-spacing: 0.3px;
         }
         .form-help i { color: var(--leaf); }
 
@@ -2444,7 +2458,7 @@
 
             <div class="story-grid" style="direction: rtl;">
                 <div class="story-image" style="direction: ltr;">
-                    <img src="https://images.unsplash.com/photo-1526397751294-331021109fbd?q=80&w=1000&auto=format&fit=crop" alt="Our Cows">
+                    <img src="milk.avif" alt="Our Cows">
                 </div>
                 <div class="story-content" style="direction: ltr;">
                     <div class="eyebrow" data-i18n="about_p3_eyebrow">Our Promise</div>
@@ -2543,7 +2557,14 @@
                             <div class="contact-info-icon"><i class="fas fa-phone"></i></div>
                             <div>
                                 <h4 data-i18n="contact_call">Call Us</h4>
-                                <a href="tel:03349999114">0334 9999114</a>
+                                <a href="tel:+923349999114">Temporary: +92 334 9999114</a>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon"><i class="fas fa-envelope"></i></div>
+                            <div>
+                                <h4 data-i18n="contact_email">Email Us</h4>
+                                <a href="mailto:daily_freshdairy@hotmail.com">daily_freshdairy@hotmail.com</a>
                             </div>
                         </div>
                         <div class="contact-info-item">
@@ -2988,6 +3009,7 @@ const TRANSLATIONS = {
         contact_visit: "Visit Us",
         contact_address: "Ganjianwali Kalan, P.O. Khas,<br>Ugoki, Sialkot, Pakistan",
         contact_call: "Call Us",
+        contact_email: "Email Us",
         contact_whatsapp: "WhatsApp",
         contact_hours: "Farm Hours",
         contact_hours_text: "Please contact us for current visiting hours.",
@@ -3151,6 +3173,7 @@ const TRANSLATIONS = {
         contact_visit: "ہم سے ملیں",
         contact_address: "گنجیالوالی کلاں، پی او خاص،<br>اگوکی، سیالکوٹ، پاکستان",
         contact_call: "کال کریں",
+        contact_email: "ای میل کریں",
         contact_whatsapp: "واٹس ایپ",
         contact_hours: "فارم کے اوقات",
         contact_hours_text: "موجودہ وزٹ کے اوقات کے لیے براہ کرم ہم سے رابطہ کریں۔",
