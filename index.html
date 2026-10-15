@@ -809,7 +809,7 @@
         .hero-float-badge {
             position: absolute; bottom: 20px; right: 20px;
             z-index: 4;
-            background: rgba(250, 247, 240, 0.95);
+            background: rgba(253, 224, 158, 0.95);
             padding: 18px 24px;
             border-radius: var(--r-md);
             box-shadow: var(--shadow-lg);
@@ -2125,9 +2125,58 @@
         .staff-card { background:var(--white); border:1px solid var(--line); border-radius:var(--r-lg); padding:32px 25px; box-shadow:var(--shadow-sm); transition:transform .3s var(--ease), box-shadow .3s var(--ease); }
         .staff-card:hover { transform:translateY(-7px); box-shadow:var(--shadow-md); }
         .staff-icon { width:64px; height:64px; border-radius:20px; display:grid; place-items:center; background:var(--leaf-mist); color:var(--forest); font-size:25px; margin-bottom:24px; }
-        .staff-role { color:var(--leaf); font-size:10px; letter-spacing:1.7px; text-transform:uppercase; font-weight:700; }
+        .staff-role {
+            display:inline-flex; align-items:center; width:fit-content;
+            padding:7px 12px; border-radius:999px;
+            font-size:10px; letter-spacing:1.2px; text-transform:uppercase; font-weight:800;
+            color:#fff; background:#3f7d4a; box-shadow:0 3px 10px rgba(0,0,0,.08);
+        }
+        .staff-card:nth-child(1) .staff-role { background:#286749; }
+        .staff-card:nth-child(2) .staff-role { background:#2878a8; }
+        .staff-card:nth-child(3) .staff-role { background:#9a6a19; }
+        .staff-card:nth-child(4) .staff-role { background:#7b4ca0; }
+        button.staff-role { border:0; font-family:inherit; cursor:pointer; gap:9px; transition:filter .2s ease, transform .2s ease; }
+        button.staff-role:hover { filter:brightness(1.08); transform:translateY(-1px); }
+        button.staff-role i { font-size:10px; transition:transform .25s ease; }
+        button.staff-role[aria-expanded="true"] i { transform:rotate(180deg); }
+        .staff-details { margin-top:22px; padding-top:20px; border-top:1px solid var(--line); animation:staffReveal .25s ease; }
+        .staff-details[hidden] { display:none !important; }
+        .staff-details h4 { margin:0 0 8px; font-size:17px; color:var(--forest-deep); }
+        .staff-details > p { margin:0 0 14px; font-size:13px; line-height:1.75; }
+        .staff-person { display:flex; gap:12px; align-items:flex-start; padding:13px; margin-top:10px; border-radius:14px; background:var(--ivory); border:1px solid var(--line); }
+        .staff-person-icon { width:40px; height:40px; display:grid; place-items:center; flex:0 0 40px; border-radius:12px; background:var(--leaf-mist); color:var(--forest); }
+        .staff-person strong { display:block; font-size:13px; color:var(--forest-deep); }
+        .staff-person small { display:block; margin:3px 0 5px; font-size:10px; text-transform:uppercase; letter-spacing:.8px; font-weight:800; color:var(--leaf); }
+        .staff-person p { margin:0; font-size:12px; line-height:1.65; color:var(--text-body); }
+        @keyframes staffReveal { from { opacity:0; transform:translateY(5px); } to { opacity:1; transform:translateY(0); } }
         .staff-card h3 { font-size:23px; margin:10px 0 12px; }
+        .staff-member {
+            display:flex; align-items:center; gap:13px; margin-top:22px;
+            padding:12px; border-radius:14px; background:#f1f7f0;
+            border:1px solid rgba(40,103,73,.14);
+        }
+        .staff-member img {
+            width:66px; height:66px; border-radius:50%; object-fit:cover;
+            border:3px solid #fff; box-shadow:0 3px 12px rgba(27,58,42,.15);
+            flex-shrink:0;
+        }
+        .staff-member strong { display:block; color:var(--forest-deep); font-size:15px; line-height:1.4; }
+        .staff-member small { display:block; margin-top:3px; color:var(--leaf); font-size:10px; letter-spacing:1px; text-transform:uppercase; font-weight:700; }
         .staff-card p { font-size:14px; line-height:1.8; color:var(--text-body); }
+
+        .staff-detail-section { min-height:70vh; background:linear-gradient(180deg,var(--ivory),var(--ivory-warm)); }
+        .staff-back-btn { margin:0 0 38px; }
+        .staff-member-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:28px; max-width:1050px; margin:0 auto; }
+        .staff-profile-card { overflow:hidden; display:grid; grid-template-columns:minmax(150px,.85fr) 1.15fr; background:#fff; border:1px solid var(--line); border-radius:var(--r-lg); box-shadow:var(--shadow-sm); transition:transform .3s var(--ease),box-shadow .3s var(--ease); }
+        .staff-profile-card:hover { transform:translateY(-5px); box-shadow:var(--shadow-md); }
+        .staff-profile-photo { min-height:250px; background:var(--leaf-mist); overflow:hidden; }
+        .staff-profile-photo img { width:100%; height:100%; min-height:250px; object-fit:cover; }
+        .staff-profile-content { padding:26px 24px; align-self:center; }
+        .staff-profile-role { display:inline-block; color:var(--leaf); background:var(--leaf-mist); border-radius:999px; padding:7px 11px; font-size:10px; letter-spacing:1px; text-transform:uppercase; font-weight:800; margin-bottom:14px; }
+        .staff-profile-content h3 { font-size:25px; margin-bottom:12px; }
+        .staff-profile-content p { font-size:14px; line-height:1.85; }
+        @media(max-width:900px) { .staff-member-grid { grid-template-columns:1fr; max-width:650px; } }
+        @media(max-width:560px) { .staff-profile-card { grid-template-columns:1fr; } .staff-profile-photo,.staff-profile-photo img { min-height:240px; max-height:300px; } .staff-profile-content { padding:23px; } .staff-back-btn { margin-bottom:28px; } }
         .staff-note { margin:34px auto 0; display:flex; justify-content:center; align-items:center; gap:12px; text-align:center; color:var(--forest); font-weight:500; }
         .staff-note i { color:var(--leaf); }
         @media(max-width:1100px) { .staff-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
@@ -2617,27 +2666,42 @@
             <div class="staff-grid">
                 <article class="staff-card">
                     <div class="staff-icon"><i class="fas fa-user-tie"></i></div>
-                    <span class="staff-role">Farm Management</span>
+                    <button class="staff-role" type="button" aria-expanded="false">Farm Management<i class="fas fa-chevron-down" aria-hidden="true"></i></button>
                     <h3>Farm Management Team</h3>
                     <p>Keeping daily operations organized and maintaining our commitment to quality and care.</p>
+                    <div class="staff-member">
+                        <img src="samina.jpg" alt="Samina Rashid — Farm Management Team" loading="lazy">
+                        <div>
+                            <strong>Samina Rashid</strong>
+                            <small>Farm Management Team</small>
+                        </div>
+                    </div>
+                    <div class="staff-details" hidden>
+                        <h4>Meet the Team</h4>
+                        <p>Samina Rashid supports farm management by helping keep daily activities organized, coordinating routine work, and maintaining a caring, quality-focused environment.</p>
+                        <div class="staff-person"><span class="staff-person-icon"><i class="fas fa-user-tie"></i></span><div><strong>Samina Rashid</strong><small>Farm Management Team</small><p>Helps coordinate farm routines and supports the team in keeping everyday operations running smoothly.</p></div></div>
+                    </div>
                 </article>
                 <article class="staff-card">
                     <div class="staff-icon"><i class="fas fa-cow"></i></div>
-                    <span class="staff-role">Animal Care</span>
+                    <button class="staff-role" type="button" aria-expanded="false">Animal Care<i class="fas fa-chevron-down" aria-hidden="true"></i></button>
                     <h3>Livestock Care Team</h3>
                     <p>Looking after our animals with daily attention, proper care, and a focus on their wellbeing.</p>
+                    <div class="staff-details" hidden><h4>Meet the Team</h4><p>Our animal-care staff help provide daily feeding, clean water, comfortable housing, and careful observation of livestock wellbeing.</p><div class="staff-person"><span class="staff-person-icon"><i class="fas fa-heart"></i></span><div><strong>Livestock Care Staff</strong><small>Animal Care</small><p>Supports feeding routines, cleanliness, gentle handling, and reporting any changes in animal health.</p></div></div><div class="staff-person"><span class="staff-person-icon"><i class="fas fa-seedling"></i></span><div><strong>Daily Care Support</strong><small>Feeding & Environment</small><p>Helps keep feeding areas and animal spaces tidy, safe, and comfortable.</p></div></div></div>
                 </article>
                 <article class="staff-card">
                     <div class="staff-icon"><i class="fas fa-flask"></i></div>
-                    <span class="staff-role">Quality & Hygiene</span>
+                    <button class="staff-role" type="button" aria-expanded="false">Quality & Hygiene<i class="fas fa-chevron-down" aria-hidden="true"></i></button>
                     <h3>Quality Care Team</h3>
                     <p>Supporting clean handling practices and careful preparation of our dairy products.</p>
+                    <div class="staff-details" hidden><h4>Meet the Team</h4><p>This team focuses on cleanliness and careful handling throughout routine dairy work, helping maintain consistent standards from the farm to the customer.</p><div class="staff-person"><span class="staff-person-icon"><i class="fas fa-shield-alt"></i></span><div><strong>Quality & Hygiene Staff</strong><small>Cleanliness Standards</small><p>Helps maintain clean work areas, hygienic equipment, and responsible product handling.</p></div></div><div class="staff-person"><span class="staff-person-icon"><i class="fas fa-clipboard-check"></i></span><div><strong>Product Handling Support</strong><small>Quality Care</small><p>Supports routine checks and careful preparation so dairy products are handled consistently.</p></div></div></div>
                 </article>
                 <article class="staff-card">
                     <div class="staff-icon"><i class="fas fa-truck"></i></div>
-                    <span class="staff-role">Customer Service</span>
+                    <button class="staff-role" type="button" aria-expanded="false">Customer Service<i class="fas fa-chevron-down" aria-hidden="true"></i></button>
                     <h3>Delivery & Customer Team</h3>
                     <p>Helping customers with enquiries and coordinating the delivery of fresh dairy products.</p>
+                    <div class="staff-details" hidden><h4>Meet the Team</h4><p>Our customer and delivery staff help communicate clearly with customers, coordinate orders, and support reliable delivery of dairy products.</p><div class="staff-person"><span class="staff-person-icon"><i class="fas fa-comments"></i></span><div><strong>Customer Support Staff</strong><small>Customer Service</small><p>Answers product questions, receives customer requests, and helps share order information.</p></div></div><div class="staff-person"><span class="staff-person-icon"><i class="fas fa-truck"></i></span><div><strong>Delivery Support Staff</strong><small>Order Coordination</small><p>Helps organize deliveries and supports timely communication about customer orders.</p></div></div></div>
                 </article>
             </div>
             <div class="staff-note"><i class="fas fa-leaf"></i><span>Every day, our team works with one goal: freshness, care, and trust.</span></div>
@@ -2645,7 +2709,7 @@
     </section>
 </div>
 
-<div class="page" id="page-contact">
+<div class="page" id="page-staff-detail"></div>\n\n<div class="page" id="page-contact">
     <section class="section contact-section" style="padding-top: 160px;">
         <div class="container">
             <div class="section-head">
@@ -3475,7 +3539,7 @@ function go(page, event) {
     currentPage = page;
     document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
     const navLinks = document.querySelectorAll('.nav a');
-    const pageMap = { 'home': 0, 'about': 1, 'products': 2, 'facilities': 3, 'gallery': 4, 'staff': 5, 'contact': 6 };
+    const pageMap = { 'home': 0, 'about': 1, 'products': 2, 'facilities': 3, 'gallery': 4, 'staff': 5, 'staff-detail': 5, 'contact': 6 };
     if (pageMap[page] !== undefined && navLinks[pageMap[page]]) navLinks[pageMap[page]].classList.add('active');
     document.getElementById('navLinks').classList.remove('open');
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -3895,6 +3959,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+// Our Staff: open a dedicated page for each department.
+const STAFF_DEPARTMENTS = [
+ {heading:'Farm Management Team', intro:'Meet the people coordinating daily farm operations and keeping routines organized.', members:[{name:'Samina Rashid',role:'Farm Management Team',photo:'samina.jpg',desc:'Supports farm management by organizing daily activities, coordinating routine work, and helping maintain a caring, quality-focused environment.'}]},
+ {heading:'Livestock Care Team', intro:'Our livestock team focuses on animal wellbeing, proper feeding, clean surroundings, and attentive daily care.', members:[{name:'Livestock Care Staff',role:'Animal Care',photo:'https://images.unsplash.com/photo-1516467508483-a7212fdbfde8?auto=format&fit=crop&w=900&q=85',desc:'Supports feeding routines, provides clean water, keeps animals’ living areas tidy, and reports changes in animal wellbeing.'},{name:'Daily Care Support',role:'Feeding & Environment',photo:'https://images.unsplash.com/photo-1524024973431-2ad916746881?auto=format&fit=crop&w=900&q=85',desc:'Helps keep feeding areas and animal spaces safe, comfortable, and clean throughout the day.'}]},
+ {heading:'Quality Care Team', intro:'This team supports careful handling, clean workspaces, and consistent hygiene practices.', members:[{name:'Quality & Hygiene Staff',role:'Cleanliness Standards',photo:'https://images.unsplash.com/photo-1589927986089-35812388d1f5?auto=format&fit=crop&w=900&q=85',desc:'Helps maintain clean work areas, hygienic equipment, and responsible handling practices.'},{name:'Product Handling Support',role:'Quality Care',photo:'https://images.unsplash.com/photo-1563636619-e9143da7973b?auto=format&fit=crop&w=900&q=85',desc:'Supports routine checks and careful preparation so dairy products are handled consistently.'}]},
+ {heading:'Delivery & Customer Team', intro:'Our customer and delivery team helps customers get answers, coordinates orders, and supports reliable delivery.', members:[{name:'Customer Support Staff',role:'Customer Service',photo:'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=900&q=85',desc:'Answers product questions, receives customer requests, and communicates order information clearly.'},{name:'Delivery Support Staff',role:'Order Coordination',photo:'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=900&q=85',desc:'Helps organize deliveries and supports timely communication about customer orders.'}]}
+];
+function openStaffDepartment(index) {
+ const dept=STAFF_DEPARTMENTS[index]; if(!dept)return;
+ document.getElementById('page-staff-detail').innerHTML=`<section class="section staff-detail-section" style="padding-top:160px"><div class="container"><button class="btn btn-outline staff-back-btn" onclick="go('staff')"><i class="fas fa-arrow-left"></i> Back to Our Staff</button><div class="section-head center"><div class="eyebrow">Daily Fresh Dairy · Our People</div><h2 class="display"><em>${dept.heading}</em></h2><p>${dept.intro}</p></div><div class="staff-member-grid">${dept.members.map(m=>`<article class="staff-profile-card"><div class="staff-profile-photo"><img src="${m.photo}" alt="${m.name}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=85'"></div><div class="staff-profile-content"><span class="staff-profile-role">${m.role}</span><h3>${m.name}</h3><p>${m.desc}</p></div></article>`).join('')}</div><div class="staff-note"><i class="fas fa-leaf"></i><span>Freshness, care, and trust — in everything we do.</span></div></div></section>`;
+ go('staff-detail');
+}
+window.openStaffDepartment=openStaffDepartment;
+document.querySelectorAll('.staff-card .staff-role').forEach((tab,index)=>{tab.removeAttribute('aria-expanded');tab.innerHTML=tab.textContent.trim();tab.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();openStaffDepartment(index);});});
 </script>
 
 </body>
