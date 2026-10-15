@@ -1686,7 +1686,7 @@
         }
         .footer-grid {
             display: grid;
-            grid-template-columns: 1.8fr 1fr 1fr 1.4fr;
+            grid-template-columns: 1.55fr 0.8fr 0.8fr 1.45fr;
             gap: 60px; margin-bottom: 60px;
         }
         .footer-brand h3 {
@@ -1738,6 +1738,29 @@
             margin-right: 10px; width: 16px;
             display: inline-block;
         }
+
+        /* Simple footer contact details: icon + label + value, no cards or tabs */
+        .footer-contact-list { display: flex; flex-direction: column; gap: 12px; }
+        .footer-contact-item {
+            display: grid; grid-template-columns: 16px auto minmax(0, 1fr);
+            align-items: start; column-gap: 9px; min-width: 0;
+            color: rgba(250, 247, 240, 0.78); font-size: 12px; line-height: 1.65;
+        }
+        .footer-contact-item > i {
+            color: var(--gold-light); font-size: 13px; margin-top: 3px;
+        }
+        .footer-contact-label {
+            color: var(--gold-light); font-size: 11px; font-weight: 700;
+            white-space: nowrap;
+        }
+        .footer-contact-item > a {
+            min-width: 0; color: rgba(250, 247, 240, 0.82) !important;
+            font-size: 12px !important; overflow-wrap: anywhere;
+            margin: 0 !important; padding: 0 !important;
+        }
+        .footer-contact-item > a:hover { color: var(--gold-light) !important; padding-left: 0 !important; }
+        .footer-contact-item > span:last-child { min-width: 0; overflow-wrap: anywhere; }
+
         html[lang="ur"] .footer-col p i,
         body.urdu-mode .footer-col p i { margin-right: 0; margin-left: 10px; }
         .footer-bottom {
@@ -2095,6 +2118,58 @@
                 scroll-behavior: auto !important;
             }
         }
+    
+        /* Our Staff page */
+        .staff-section { min-height: 70vh; background: linear-gradient(180deg, var(--ivory), var(--ivory-warm)); }
+        .staff-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:22px; }
+        .staff-card { background:var(--white); border:1px solid var(--line); border-radius:var(--r-lg); padding:32px 25px; box-shadow:var(--shadow-sm); transition:transform .3s var(--ease), box-shadow .3s var(--ease); }
+        .staff-card:hover { transform:translateY(-7px); box-shadow:var(--shadow-md); }
+        .staff-icon { width:64px; height:64px; border-radius:20px; display:grid; place-items:center; background:var(--leaf-mist); color:var(--forest); font-size:25px; margin-bottom:24px; }
+        .staff-role { color:var(--leaf); font-size:10px; letter-spacing:1.7px; text-transform:uppercase; font-weight:700; }
+        .staff-card h3 { font-size:23px; margin:10px 0 12px; }
+        .staff-card p { font-size:14px; line-height:1.8; color:var(--text-body); }
+        .staff-note { margin:34px auto 0; display:flex; justify-content:center; align-items:center; gap:12px; text-align:center; color:var(--forest); font-weight:500; }
+        .staff-note i { color:var(--leaf); }
+        @media(max-width:1100px) { .staff-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+        @media(max-width:768px) {
+            .staff-section { padding-top:145px !important; }
+            .staff-grid { grid-template-columns:1fr; gap:16px; }
+            .staff-card { padding:25px; }
+            .header-wrapper { padding-bottom:0; }
+            .header { border-radius:22px; }
+            .header-inner { flex-wrap:wrap; gap:8px; }
+            .header-actions { margin-left:auto; }
+            .menu-toggle { display:none !important; }
+            .nav, .nav.open {
+                position:relative; top:auto; left:auto; right:auto; bottom:auto;
+                order:3; width:100%; display:flex; flex-direction:row;
+                overflow-x:auto; overflow-y:hidden; white-space:nowrap;
+                padding:8px 0 10px; gap:5px; margin:0;
+                background:transparent; border:0; box-shadow:none;
+                transform:none; max-height:none; border-radius:0;
+                scrollbar-width:thin; -webkit-overflow-scrolling:touch;
+            }
+            .nav a { flex:0 0 auto; width:auto; padding:9px 13px; font-size:12px; text-align:center; }
+            .header-inner { min-height:unset; }
+            .logo-image { height:36px !important; max-height:36px !important; }
+            .logo-text h1 { font-size:16px; }
+            .logo-text span { letter-spacing:2px; }
+            .lang-btn { padding:7px 11px; min-width:unset; }
+            .hero { padding-top:150px; }
+            .container, .container-narrow { padding-left:16px; padding-right:16px; }
+            .products-grid { grid-template-columns:1fr; }
+            .gallery-masonry { column-count:2; }
+            .top-bar { display:none; }
+        }
+        @media(max-width:380px) {
+            .logo { gap:7px; }
+            .logo-image { height:31px !important; max-height:31px !important; }
+            .logo-text h1 { font-size:14px; }
+            .logo-text span { font-size:6px; letter-spacing:1.5px; }
+            .nav a { padding:8px 10px; font-size:11px; }
+            .gallery-masonry { column-count:1; }
+        }
+
     </style>
 </head>
 <body>
@@ -2147,15 +2222,12 @@
                     <a href="#" onclick="go('products', event)" data-i18n="nav_products">Products</a>
                     <a href="#" onclick="go('facilities', event)" data-i18n="nav_facilities">Facilities</a>
                     <a href="#" onclick="go('gallery', event)" data-i18n="nav_gallery">Gallery</a>
+                    <a href="#" onclick="go('staff', event)">Our Staff</a>
                     <a href="#" onclick="go('contact', event)" data-i18n="nav_contact">Contact</a>
                 </nav>
 
                 <div class="header-actions">
                     <button class="lang-btn" onclick="toggleLang()" id="langBtn">اردو</button>
-                    <button class="header-order-btn" onclick="openWhatsApp()">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span data-i18n="btn_order">Order</span>
-                    </button>
                     <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
                 </div>
             </div>
@@ -2208,13 +2280,13 @@
             
             <div class="hero-right">
                 <div class="hero-card hero-card-1">
-                    <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?q=80&w=900&auto=format&fit=crop" alt="Our Farm">
+                    <img src="cow(1).png" alt="Our Farm">
                 </div>
                 <div class="hero-card hero-card-2">
                     <img src="https://images.unsplash.com/photo-1550583724-b2692b85b150?q=80&w=900&auto=format&fit=crop" alt="Fresh Milk">
                 </div>
                 <div class="hero-card hero-card-3">
-                    <img src="https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?q=80&w=900&auto=format&fit=crop" alt="Cheese">
+                    <img src="child.jfif" alt="Cheese">
                 </div>
                 <div class="hero-float-badge">
                     <div class="badge-icon"><i class="fas fa-leaf"></i></div>
@@ -2534,6 +2606,45 @@
 <!-- =========================================================
      CONTACT PAGE
      ========================================================= -->
+<div class="page" id="page-staff">
+    <section class="section staff-section" style="padding-top:160px;">
+        <div class="container">
+            <div class="section-head center">
+                <div class="eyebrow">The People Behind Our Farm</div>
+                <h2 class="display">Meet <em>Our Staff</em></h2>
+                <p>Daily Fresh Dairy is built on care, dedication, and the people who work hard every day to bring freshness closer to your home.</p>
+            </div>
+            <div class="staff-grid">
+                <article class="staff-card">
+                    <div class="staff-icon"><i class="fas fa-user-tie"></i></div>
+                    <span class="staff-role">Farm Management</span>
+                    <h3>Farm Management Team</h3>
+                    <p>Keeping daily operations organized and maintaining our commitment to quality and care.</p>
+                </article>
+                <article class="staff-card">
+                    <div class="staff-icon"><i class="fas fa-cow"></i></div>
+                    <span class="staff-role">Animal Care</span>
+                    <h3>Livestock Care Team</h3>
+                    <p>Looking after our animals with daily attention, proper care, and a focus on their wellbeing.</p>
+                </article>
+                <article class="staff-card">
+                    <div class="staff-icon"><i class="fas fa-flask"></i></div>
+                    <span class="staff-role">Quality & Hygiene</span>
+                    <h3>Quality Care Team</h3>
+                    <p>Supporting clean handling practices and careful preparation of our dairy products.</p>
+                </article>
+                <article class="staff-card">
+                    <div class="staff-icon"><i class="fas fa-truck"></i></div>
+                    <span class="staff-role">Customer Service</span>
+                    <h3>Delivery & Customer Team</h3>
+                    <p>Helping customers with enquiries and coordinating the delivery of fresh dairy products.</p>
+                </article>
+            </div>
+            <div class="staff-note"><i class="fas fa-leaf"></i><span>Every day, our team works with one goal: freshness, care, and trust.</span></div>
+        </div>
+    </section>
+</div>
+
 <div class="page" id="page-contact">
     <section class="section contact-section" style="padding-top: 160px;">
         <div class="container">
@@ -2808,11 +2919,30 @@
                 <a onclick="go('products', event)" style="cursor:pointer;" data-i18n="prod_cheese">Cheese</a>
                 <a onclick="go('products', event)" style="cursor:pointer;" data-i18n="prod_butter">Butter</a>
             </div>
-            <div class="footer-col">
+            <div class="footer-col footer-contact">
                 <h4 data-i18n="footer_contact">Contact</h4>
-                <p><i class="fas fa-map-marker-alt"></i> <span data-i18n="footer_address">Ganjianwali Kalan, P.O. Khas, Ugoki, Sialkot, Pakistan</span></p>
-                <p><i class="fas fa-phone"></i> <a href="tel:03349999114" style="color: inherit;">0334 9999114</a></p>
-                <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/923349999114" target="_blank" style="color: inherit;">0334 9999114</a></p>
+                <div class="footer-contact-list">
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone-alt" aria-hidden="true"></i>
+                        <span class="footer-contact-label">Tel:</span>
+                        <a href="tel:+923349999114">0334 9999114</a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-mobile-alt" aria-hidden="true"></i>
+                        <span class="footer-contact-label">Mob:</span>
+                        <a href="tel:+923349999114">0334 9999114</a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        <span class="footer-contact-label">Email:</span>
+                        <a href="mailto:daily_freshdairy@hotmail.com">daily_freshdairy@hotmail.com</a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        <span class="footer-contact-label">Add:</span>
+                        <span data-i18n="footer_address">Ganjianwali Kalan, P.O. Khas, Ugoki, Sialkot, Pakistan</span>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="footer-bottom">
@@ -3345,7 +3475,7 @@ function go(page, event) {
     currentPage = page;
     document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
     const navLinks = document.querySelectorAll('.nav a');
-    const pageMap = { 'home': 0, 'about': 1, 'products': 2, 'facilities': 3, 'gallery': 4, 'contact': 5 };
+    const pageMap = { 'home': 0, 'about': 1, 'products': 2, 'facilities': 3, 'gallery': 4, 'staff': 5, 'contact': 6 };
     if (pageMap[page] !== undefined && navLinks[pageMap[page]]) navLinks[pageMap[page]].classList.add('active');
     document.getElementById('navLinks').classList.remove('open');
     window.scrollTo({ top: 0, behavior: 'smooth' });
