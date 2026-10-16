@@ -908,7 +908,7 @@
         .story-value span { font-size: 14px; font-weight: 500; color: var(--text-ink); }
 
         /* =========================================================
-           FEATURE PANEL — ENHANCED & MORE ATTRACTIVE
+           FEATURE PANEL
            ========================================================= */
         .feature-panel {
             position: relative;
@@ -917,7 +917,6 @@
             padding: 140px 0;
             overflow: hidden;
         }
-
         .feature-panel::before {
             content: '';
             position: absolute;
@@ -942,7 +941,6 @@
             pointer-events: none;
             z-index: 0;
         }
-
         .feature-panel .leaf-texture {
             position: absolute;
             inset: 0;
@@ -954,7 +952,6 @@
             z-index: 1;
             pointer-events: none;
         }
-
         .feature-panel .deco-leaf {
             position: absolute;
             color: var(--leaf-light);
@@ -1081,7 +1078,7 @@
         }
 
         /* =========================================================
-           PRODUCTS SECTION — h.png watermark
+           PRODUCTS SECTION
            ========================================================= */
         .products-section {
             position: relative;
@@ -1150,110 +1147,208 @@
             border-color: var(--forest);
             color: var(--ivory);
         }
+
+        /* =========================================================
+           HOME PRODUCTS — HORIZONTAL CAROUSEL
+           ========================================================= */
+        .products-carousel-wrap {
+            position: relative;
+            padding: 0 8px;
+        }
+        .products-carousel {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+            padding: 10px 4px 28px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: var(--leaf-pale) transparent;
+        }
+        .products-carousel::-webkit-scrollbar { height: 6px; }
+        .products-carousel::-webkit-scrollbar-track { background: transparent; }
+        .products-carousel::-webkit-scrollbar-thumb {
+            background: var(--leaf-pale);
+            border-radius: 999px;
+        }
+        .products-carousel::-webkit-scrollbar-thumb:hover { background: var(--leaf); }
+        .products-carousel .product-card {
+            flex: 0 0 320px;
+            scroll-snap-align: start;
+        }
+        .carousel-nav {
+            position: absolute;
+            top: 42%;
+            transform: translateY(-50%);
+            z-index: 5;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--white);
+            color: var(--forest);
+            border: 1px solid var(--line-mid);
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s var(--ease);
+        }
+        .carousel-nav:hover {
+            background: var(--forest);
+            color: var(--ivory);
+            transform: translateY(-50%) scale(1.08);
+            border-color: var(--forest);
+        }
+        .carousel-nav:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+            transform: translateY(-50%);
+        }
+        .carousel-prev { left: -8px; }
+        .carousel-next { right: -8px; }
+        html[lang="ur"] .products-carousel,
+        body.urdu-mode .products-carousel { direction: rtl; }
+        html[lang="ur"] .carousel-prev,
+        body.urdu-mode .carousel-prev { left: auto; right: -8px; }
+        html[lang="ur"] .carousel-next,
+        body.urdu-mode .carousel-next { left: -8px; right: auto; }
+        @media (max-width: 768px) {
+            .carousel-nav { display: none; }
+            .products-carousel .product-card { flex: 0 0 82%; }
+            .products-carousel { gap: 16px; }
+        }
+        @media (max-width: 480px) {
+            .products-carousel .product-card { flex: 0 0 88%; }
+        }
+
+        /* =========================================================
+           PRODUCTS PAGE HEADER — BANNER WITH product-back.png
+           ========================================================= */
+        .products-page-header {
+            position: relative;
+            padding: 160px 0 60px;
+            overflow: hidden;
+            background-color: #F3EDE0;
+            background-image: url('product-back.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            
+        }
+        .products-page-header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(243, 237, 224, 0.94) 0%, rgba(243, 237, 224, 0.75) 45%, rgba(243, 237, 224, 0.15) 75%, rgba(243, 237, 224, 0) 100%);
+            z-index: 0;
+            pointer-events: none;
+        }
+        html[lang="ur"] .products-page-header::before,
+        body.urdu-mode .products-page-header::before {
+            background: linear-gradient(270deg, rgba(243, 237, 224, 0.94) 0%, rgba(243, 237, 224, 0.75) 45%, rgba(243, 237, 224, 0.15) 75%, rgba(243, 237, 224, 0) 100%);
+        }
+        .products-page-header .container {
+            position: relative;
+            z-index: 2;
+        }
+        .products-hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .products-hero-text .eyebrow {
+            color: var(--forest);
+            font-weight: 700;
+            margin-bottom: 22px;
+        }
+        .products-hero-text .eyebrow::before {
+            background: var(--forest);
+        }
+        .products-hero-text .display {
+            font-size: clamp(2.2rem, 4.5vw, 4rem);
+            color: var(--forest-deep);
+            margin-bottom: 24px;
+            line-height: 1.08;
+        }
+        .products-hero-text p {
+            font-size: 16px;
+            color: var(--text-body);
+            line-height: 1.8;
+            max-width: 500px;
+        }
+        .products-hero-image {
+            position: relative;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        .products-hero-image img {
+            width: 100%;
+            max-width: 620px;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 30px 60px rgba(15, 37, 26, 0.18));
+            animation: floatA 8s ease-in-out infinite;
+        }
+        /* Decorative script accents (top-right) */
+        .products-hero-script {
+            position: absolute;
+            top: 24px;
+            right: 30px;
+            z-index: 3;
+            text-align: right;
+            font-family: var(--font-elegant);
+            font-style: italic;
+            color: var(--forest);
+            line-height: 1.15;
+            font-size: 22px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            opacity: 0.85;
+            pointer-events: none;
+        }
+        .products-hero-script span {
+            display: block;
+        }
+        .products-hero-script small {
+            display: inline-block;
+            font-size: 14px;
+            margin-top: 6px;
+            color: var(--leaf);
+            font-style: normal;
+        }
+        @media (max-width: 1100px) {
+            .products-hero-grid { gap: 40px; }
+            .products-hero-text .display { font-size: clamp(2rem, 5vw, 3rem); }
+        }
+        @media (max-width: 900px) {
+            .products-page-header { padding: 140px 0 50px; }
+            .products-hero-grid { grid-template-columns: 1fr; gap: 30px; }
+            .products-hero-image { justify-content: center; }
+            .products-hero-image img { max-width: 460px; }
+            .products-page-header::before {
+                background: linear-gradient(180deg, rgba(243, 237, 224, 0.95) 0%, rgba(243, 237, 224, 0.7) 50%, rgba(243, 237, 224, 0.15) 100%);
+            }
+            html[lang="ur"] .products-page-header::before,
+            body.urdu-mode .products-page-header::before {
+                background: linear-gradient(180deg, rgba(243, 237, 224, 0.95) 0%, rgba(243, 237, 224, 0.7) 50%, rgba(243, 237, 224, 0.15) 100%);
+            }
+        }
+        @media (max-width: 640px) {
+            .products-page-header { padding: 130px 0 40px; }
+            .products-hero-script { display: none; }
+            .products-hero-text p { font-size: 15px; }
+        }
+
         .products-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 32px;
         }
-        /* =========================================================
-   HOME PRODUCTS — HORIZONTAL CAROUSEL
-   ========================================================= */
-.products-carousel-wrap {
-    position: relative;
-    padding: 0 8px;
-}
-
-.products-carousel {
-    display: flex;
-    gap: 24px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
-    padding: 10px 4px 28px;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-    scrollbar-color: var(--leaf-pale) transparent;
-}
-
-.products-carousel::-webkit-scrollbar {
-    height: 6px;
-}
-.products-carousel::-webkit-scrollbar-track {
-    background: transparent;
-}
-.products-carousel::-webkit-scrollbar-thumb {
-    background: var(--leaf-pale);
-    border-radius: 999px;
-}
-.products-carousel::-webkit-scrollbar-thumb:hover {
-    background: var(--leaf);
-}
-
-/* Each card — fixed width so they scroll sideways */
-.products-carousel .product-card {
-    flex: 0 0 320px;
-    scroll-snap-align: start;
-}
-
-/* Arrow buttons */
-.carousel-nav {
-    position: absolute;
-    top: 42%;
-    transform: translateY(-50%);
-    z-index: 5;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: var(--white);
-    color: var(--forest);
-    border: 1px solid var(--line-mid);
-    box-shadow: var(--shadow-md);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s var(--ease);
-}
-.carousel-nav:hover {
-    background: var(--forest);
-    color: var(--ivory);
-    transform: translateY(-50%) scale(1.08);
-    border-color: var(--forest);
-}
-.carousel-nav:disabled {
-    opacity: 0.35;
-    cursor: not-allowed;
-    transform: translateY(-50%);
-}
-.carousel-prev { left: -8px; }
-.carousel-next { right: -8px; }
-
-/* RTL support for Urdu */
-html[lang="ur"] .products-carousel,
-body.urdu-mode .products-carousel {
-    direction: rtl;
-}
-html[lang="ur"] .carousel-prev,
-body.urdu-mode .carousel-prev {
-    left: auto;
-    right: -8px;
-}
-html[lang="ur"] .carousel-next,
-body.urdu-mode .carousel-next {
-    left: -8px;
-    right: auto;
-}
-
-/* Hide arrows on small screens — swipe works there */
-@media (max-width: 768px) {
-    .carousel-nav { display: none; }
-    .products-carousel .product-card { flex: 0 0 82%; }
-    .products-carousel { gap: 16px; }
-}
-@media (max-width: 480px) {
-    .products-carousel .product-card { flex: 0 0 88%; }
-}
         .product-card {
             background: var(--white);
             border-radius: var(--r-lg);
@@ -1353,7 +1448,7 @@ body.urdu-mode .carousel-next {
         .empty-state p { color: var(--text-soft); font-size: 14px; }
 
         /* =========================================================
-           GALLERY SECTION — f.png watermark
+           GALLERY SECTION
            ========================================================= */
         .gallery-section {
             position: relative;
@@ -1438,7 +1533,7 @@ body.urdu-mode .carousel-next {
         .lightbox-close:hover { background: var(--gold); color: var(--forest-deep); }
 
         /* =========================================================
-           FACILITIES SECTION — p.png watermark
+           FACILITIES SECTION
            ========================================================= */
         .facilities-section {
             position: relative;
@@ -1526,7 +1621,7 @@ body.urdu-mode .carousel-next {
         }
 
         /* =========================================================
-           SPONSORED BY / GOVERNMENT SECTION — CLEAN LOGO ROW
+           SPONSORED BY / GOVERNMENT SECTION
            ========================================================= */
         .govt-section {
             background: linear-gradient(135deg, #FAF7F0 0%, #F3EDE0 100%);
@@ -1544,8 +1639,6 @@ body.urdu-mode .carousel-next {
             align-items: center;
             gap: 40px;
         }
-
-        /* Small heading line */
         .govt-label {
             display: inline-flex;
             align-items: center;
@@ -1565,8 +1658,6 @@ body.urdu-mode .carousel-next {
             background: var(--leaf);
             opacity: 0.5;
         }
-
-        /* Logo Row */
         .govt-logos {
             display: flex;
             justify-content: center;
@@ -1599,7 +1690,6 @@ body.urdu-mode .carousel-next {
             letter-spacing: 1px;
             text-transform: uppercase;
         }
-
         html[lang="ur"] .govt-label,
         body.urdu-mode .govt-label {
             font-family: var(--font-urdu);
@@ -1613,26 +1703,23 @@ body.urdu-mode .carousel-next {
             font-size: 14px;
             text-transform: none;
         }
-
         @media (max-width: 992px) {
             .govt-logos { gap: 32px; }
             .govt-logo-item img { height: 76px; }
         }
-
         @media (max-width: 768px) {
             .govt-section { padding: 45px 0; }
             .govt-logos { gap: 28px; }
             .govt-logo-item img { height: 66px; }
             .govt-logo-item span { font-size: 10px; }
         }
-
         @media (max-width: 480px) {
             .govt-logos { gap: 20px; }
             .govt-logo-item img { height: 56px; }
         }
 
         /* =========================================================
-           CTA SECTION — f.png watermark
+           CTA SECTION
            ========================================================= */
         .cta-section {
             position: relative;
@@ -1662,7 +1749,7 @@ body.urdu-mode .carousel-next {
         }
 
         /* =========================================================
-           CONTACT SECTION — ELEGANT FONT
+           CONTACT SECTION
            ========================================================= */
         .contact-section { background: var(--ivory-warm); }
         .contact-grid {
@@ -1687,7 +1774,6 @@ body.urdu-mode .carousel-next {
             font-size: 18px; flex-shrink: 0;
             box-shadow: var(--shadow-xs);
         }
-        /* Elegant font for contact labels */
         .contact-info-item h4 {
             font-family: var(--font-elegant);
             font-size: 14px; font-weight: 600;
@@ -1696,7 +1782,6 @@ body.urdu-mode .carousel-next {
             color: var(--text-soft);
             margin-bottom: 6px;
         }
-        /* Elegant font for contact info text */
         .contact-info-item p, .contact-info-item a {
             font-family: var(--font-elegant);
             font-size: 20px; font-weight: 500;
@@ -1728,7 +1813,6 @@ body.urdu-mode .carousel-next {
         }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
         .form-group { margin-bottom: 22px; }
-        /* Elegant font for form labels */
         .form-group label {
             display: block;
             font-family: var(--font-elegant);
@@ -1837,8 +1921,6 @@ body.urdu-mode .carousel-next {
             margin-right: 10px; width: 16px;
             display: inline-block;
         }
-
-        /* Simple footer contact details: icon + label + value, no cards or tabs */
         .footer-contact-list { display: flex; flex-direction: column; gap: 12px; }
         .footer-contact-item {
             display: grid; grid-template-columns: 16px auto minmax(0, 1fr);
@@ -1859,7 +1941,6 @@ body.urdu-mode .carousel-next {
         }
         .footer-contact-item > a:hover { color: var(--gold-light) !important; padding-left: 0 !important; }
         .footer-contact-item > span:last-child { min-width: 0; overflow-wrap: anywhere; }
-
         html[lang="ur"] .footer-col p i,
         body.urdu-mode .footer-col p i { margin-right: 0; margin-left: 10px; }
         .footer-bottom {
@@ -2484,9 +2565,7 @@ body.urdu-mode .carousel-next {
         </div>
     </section>
 
-    <!-- =========================================================
-         FEATURE PANEL — ENHANCED & MORE ATTRACTIVE
-         ========================================================= -->
+    <!-- FEATURE PANEL -->
     <section class="feature-panel">
         <div class="leaf-texture"></div>
 
@@ -2539,35 +2618,34 @@ body.urdu-mode .carousel-next {
         </div>
     </section>
 
-    <!-- PRODUCTS PREVIEW -->
-   <!-- PRODUCTS PREVIEW — HORIZONTAL CAROUSEL -->
-<section class="section products-section">
-    <div class="container">
-        <div class="section-head center">
-            <div class="eyebrow" data-i18n="prod_eyebrow">Our Products</div>
-            <h2 class="display" data-i18n="prod_title">Farm-Fresh Dairy Collection.</h2>
-            <p data-i18n="prod_desc">A curated range of dairy essentials — each one crafted with care from our farm to your home.</p>
+    <!-- PRODUCTS PREVIEW — HORIZONTAL CAROUSEL -->
+    <section class="section products-section">
+        <div class="container">
+            <div class="section-head center">
+                <div class="eyebrow" data-i18n="prod_eyebrow">Our Products</div>
+                <h2 class="display" data-i18n="prod_title">Farm-Fresh Dairy Collection.</h2>
+                <p data-i18n="prod_desc">A curated range of dairy essentials — each one crafted with care from our farm to your home.</p>
+            </div>
+
+            <div class="products-carousel-wrap">
+                <button class="carousel-nav carousel-prev" onclick="scrollProducts(-1)" aria-label="Previous products">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <div class="products-carousel" id="homeProducts"></div>
+
+                <button class="carousel-nav carousel-next" onclick="scrollProducts(1)" aria-label="Next products">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px;">
+                <button class="btn btn-primary btn-lg" onclick="go('products', event)">
+                    <span data-i18n="btn_view_all_products">View All Products</span> <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
         </div>
-
-        <div class="products-carousel-wrap">
-            <button class="carousel-nav carousel-prev" onclick="scrollProducts(-1)" aria-label="Previous products">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-
-            <div class="products-carousel" id="homeProducts"></div>
-
-            <button class="carousel-nav carousel-next" onclick="scrollProducts(1)" aria-label="Next products">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-        </div>
-
-        <div style="text-align: center; margin-top: 50px;">
-            <button class="btn btn-primary btn-lg" onclick="go('products', event)">
-                <span data-i18n="btn_view_all_products">View All Products</span> <i class="fas fa-arrow-right"></i>
-            </button>
-        </div>
-    </div>
-</section>
+    </section>
 
     <!-- FACILITIES PREVIEW -->
     <section class="section facilities-section">
@@ -2603,15 +2681,11 @@ body.urdu-mode .carousel-next {
         </div>
     </section>
 
-    <!-- =========================================================
-         SPONSORED BY / GOVERNMENT SECTION — CLEAN LOGO ROW (5 LOGOS)
-         ========================================================= -->
+    <!-- SPONSORED BY / GOVERNMENT SECTION -->
     <section class="govt-section">
         <div class="container">
-            <!-- Small heading line -->
             <div class="govt-label" data-i18n="govt_label">Registered & Verified By</div>
 
-            <!-- Five Official Logos -->
             <div class="govt-logos">
                 <div class="govt-logo-item">
                     <img src="govt-punjab.png" alt="Government of Punjab" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2748%27 fill=%27%231B3A2A%27/%3E%3Ctext x=%2750%27 y=%2760%27 font-family=%27Arial%27 font-size=%2722%27 fill=%27%23FAF7F0%27 text-anchor=%27middle%27%3EGOP%3C/text%3E%3C/svg%3E'">
@@ -2711,14 +2785,33 @@ body.urdu-mode .carousel-next {
      PRODUCTS PAGE
      ========================================================= -->
 <div class="page" id="page-products">
-    <section class="section products-section" style="padding-top: 160px;">
-        <div class="container">
-            <div class="section-head center">
-                <div class="eyebrow" data-i18n="prod_page_eyebrow">Our Products</div>
-                <h2 class="display" data-i18n="prod_page_title">The Daily Fresh Collection.</h2>
-                <p data-i18n="prod_page_desc">Explore our range of dairy products. Add items to your enquiry list and send directly via WhatsApp.</p>
-            </div>
 
+    <!-- PRODUCTS PAGE HEADER — BANNER -->
+    <header class="products-page-header">
+        <div class="products-hero-script">
+            <span>Pure</span>
+            <span>Natural</span>
+            <span>Fresh</span>
+            <small>♡</small>
+        </div>
+        <div class="container">
+            <div class="products-hero-grid">
+                <div class="products-hero-text">
+                    <div class="eyebrow" data-i18n="prod_page_eyebrow">Our Products</div>
+                    <h1 class="display" data-i18n="prod_page_title">The Daily Fresh Collection.</h1>
+                    <p data-i18n="prod_page_desc">Explore our range of dairy products. Add items to your enquiry list and send directly via WhatsApp.</p>
+                </div>
+                <div class="products-hero-image">
+                    <img src="product-header.png" alt="Daily Fresh Dairy Products"
+                         onerror="this.style.display='none'">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- PRODUCTS LIST -->
+    <section class="section products-section" style="padding-top: 60px;">
+        <div class="container">
             <div class="products-toolbar">
                 <div class="search-box">
                     <i class="fas fa-search"></i>
@@ -2765,7 +2858,7 @@ body.urdu-mode .carousel-next {
 </div>
 
 <!-- =========================================================
-     CONTACT PAGE
+     STAFF PAGE
      ========================================================= -->
 <div class="page" id="page-staff">
     <section class="section staff-section" style="padding-top:160px;">
@@ -2821,7 +2914,12 @@ body.urdu-mode .carousel-next {
     </section>
 </div>
 
-<div class="page" id="page-staff-detail"></div><div class="page" id="page-contact">
+<div class="page" id="page-staff-detail"></div>
+
+<!-- =========================================================
+     CONTACT PAGE
+     ========================================================= -->
+<div class="page" id="page-contact">
     <section class="section contact-section" style="padding-top: 160px;">
         <div class="container">
             <div class="section-head">
@@ -3223,7 +3321,7 @@ body.urdu-mode .carousel-next {
 
 <script>
 /* =========================================================
-   TRANSLATIONS — English & Urdu
+   TRANSLATIONS
    ========================================================= */
 const TRANSLATIONS = {
     en: {
@@ -3697,10 +3795,9 @@ function renderHomeProducts() {
     const g = document.getElementById('homeProducts');
     if (!g) return;
     g.innerHTML = PRODUCTS.slice(0, 6).map(p => createProductCard(p)).join('');
-    // Update arrows after rendering
     setTimeout(updateCarouselArrows, 100);
 }
-/* ---------- Home products carousel ---------- */
+
 function scrollProducts(dir) {
     const track = document.getElementById('homeProducts');
     if (!track) return;
@@ -3710,7 +3807,6 @@ function scrollProducts(dir) {
 }
 window.scrollProducts = scrollProducts;
 
-/* Enable / disable arrow buttons based on scroll position */
 function updateCarouselArrows() {
     const track = document.getElementById('homeProducts');
     if (!track) return;
@@ -3723,15 +3819,14 @@ function updateCarouselArrows() {
     next.disabled = atEnd;
 }
 
-/* Attach listeners once the home products render */
 document.addEventListener('DOMContentLoaded', () => {
     const track = document.getElementById('homeProducts');
     if (!track) return;
     track.addEventListener('scroll', updateCarouselArrows, { passive: true });
     window.addEventListener('resize', updateCarouselArrows);
-    // Initial state after render
     setTimeout(updateCarouselArrows, 200);
 });
+
 function renderAllProducts() {
     const grid = document.getElementById('allProducts');
     if (!grid) return;
@@ -4109,7 +4204,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Our Staff: open a dedicated page for each department.
+// Our Staff
 const STAFF_DEPARTMENTS = [
  {heading:'Farm Management Team', intro:'Meet the people coordinating daily farm operations and keeping routines organized.', members:[{name:'Samina Rashid',role:'Farm Management Team',photo:'samina.jpg',desc:'Supports farm management by organizing daily activities, coordinating routine work, and helping maintain a caring, quality-focused environment.'}]},
  {heading:'Livestock Care Team', intro:'Our livestock team focuses on animal wellbeing, proper feeding, clean surroundings, and attentive daily care.', members:[{name:'Livestock Care Staff',role:'Animal Care',photo:'https://images.unsplash.com/photo-1516467508483-a7212fdbfde8?auto=format&fit=crop&w=900&q=85',desc:'Supports feeding routines, provides clean water, keeps animals’ living areas tidy, and reports changes in animal wellbeing.'},{name:'Daily Care Support',role:'Feeding & Environment',photo:'https://images.unsplash.com/photo-1524024973431-2ad916746881?auto=format&fit=crop&w=900&q=85',desc:'Helps keep feeding areas and animal spaces safe, comfortable, and clean throughout the day.'}]},
