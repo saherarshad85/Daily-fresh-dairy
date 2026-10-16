@@ -1155,6 +1155,105 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 32px;
         }
+        /* =========================================================
+   HOME PRODUCTS — HORIZONTAL CAROUSEL
+   ========================================================= */
+.products-carousel-wrap {
+    position: relative;
+    padding: 0 8px;
+}
+
+.products-carousel {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    padding: 10px 4px 28px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--leaf-pale) transparent;
+}
+
+.products-carousel::-webkit-scrollbar {
+    height: 6px;
+}
+.products-carousel::-webkit-scrollbar-track {
+    background: transparent;
+}
+.products-carousel::-webkit-scrollbar-thumb {
+    background: var(--leaf-pale);
+    border-radius: 999px;
+}
+.products-carousel::-webkit-scrollbar-thumb:hover {
+    background: var(--leaf);
+}
+
+/* Each card — fixed width so they scroll sideways */
+.products-carousel .product-card {
+    flex: 0 0 320px;
+    scroll-snap-align: start;
+}
+
+/* Arrow buttons */
+.carousel-nav {
+    position: absolute;
+    top: 42%;
+    transform: translateY(-50%);
+    z-index: 5;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--white);
+    color: var(--forest);
+    border: 1px solid var(--line-mid);
+    box-shadow: var(--shadow-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s var(--ease);
+}
+.carousel-nav:hover {
+    background: var(--forest);
+    color: var(--ivory);
+    transform: translateY(-50%) scale(1.08);
+    border-color: var(--forest);
+}
+.carousel-nav:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    transform: translateY(-50%);
+}
+.carousel-prev { left: -8px; }
+.carousel-next { right: -8px; }
+
+/* RTL support for Urdu */
+html[lang="ur"] .products-carousel,
+body.urdu-mode .products-carousel {
+    direction: rtl;
+}
+html[lang="ur"] .carousel-prev,
+body.urdu-mode .carousel-prev {
+    left: auto;
+    right: -8px;
+}
+html[lang="ur"] .carousel-next,
+body.urdu-mode .carousel-next {
+    left: -8px;
+    right: auto;
+}
+
+/* Hide arrows on small screens — swipe works there */
+@media (max-width: 768px) {
+    .carousel-nav { display: none; }
+    .products-carousel .product-card { flex: 0 0 82%; }
+    .products-carousel { gap: 16px; }
+}
+@media (max-width: 480px) {
+    .products-carousel .product-card { flex: 0 0 88%; }
+}
         .product-card {
             background: var(--white);
             border-radius: var(--r-lg);
@@ -2441,21 +2540,34 @@
     </section>
 
     <!-- PRODUCTS PREVIEW -->
-    <section class="section products-section">
-        <div class="container">
-            <div class="section-head center">
-                <div class="eyebrow" data-i18n="prod_eyebrow">Our Products</div>
-                <h2 class="display" data-i18n="prod_title">Farm-Fresh Dairy Collection.</h2>
-                <p data-i18n="prod_desc">A curated range of dairy essentials — each one crafted with care from our farm to your home.</p>
-            </div>
-            <div class="products-grid" id="homeProducts"></div>
-            <div style="text-align: center; margin-top: 50px;">
-                <button class="btn btn-primary btn-lg" onclick="go('products', event)">
-                    <span data-i18n="btn_view_all_products">View All Products</span> <i class="fas fa-arrow-right"></i>
-                </button>
-            </div>
+   <!-- PRODUCTS PREVIEW — HORIZONTAL CAROUSEL -->
+<section class="section products-section">
+    <div class="container">
+        <div class="section-head center">
+            <div class="eyebrow" data-i18n="prod_eyebrow">Our Products</div>
+            <h2 class="display" data-i18n="prod_title">Farm-Fresh Dairy Collection.</h2>
+            <p data-i18n="prod_desc">A curated range of dairy essentials — each one crafted with care from our farm to your home.</p>
         </div>
-    </section>
+
+        <div class="products-carousel-wrap">
+            <button class="carousel-nav carousel-prev" onclick="scrollProducts(-1)" aria-label="Previous products">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+
+            <div class="products-carousel" id="homeProducts"></div>
+
+            <button class="carousel-nav carousel-next" onclick="scrollProducts(1)" aria-label="Next products">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px;">
+            <button class="btn btn-primary btn-lg" onclick="go('products', event)">
+                <span data-i18n="btn_view_all_products">View All Products</span> <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+</section>
 
     <!-- FACILITIES PREVIEW -->
     <section class="section facilities-section">
@@ -3581,8 +3693,45 @@ function createProductCard(p) {
         </div>`;
 }
 
-function renderHomeProducts() { const g = document.getElementById('homeProducts'); if (g) g.innerHTML = PRODUCTS.slice(0, 3).map(p => createProductCard(p)).join(''); }
+function renderHomeProducts() {
+    const g = document.getElementById('homeProducts');
+    if (!g) return;
+    g.innerHTML = PRODUCTS.slice(0, 6).map(p => createProductCard(p)).join('');
+    // Update arrows after rendering
+    setTimeout(updateCarouselArrows, 100);
+}
+/* ---------- Home products carousel ---------- */
+function scrollProducts(dir) {
+    const track = document.getElementById('homeProducts');
+    if (!track) return;
+    const card = track.querySelector('.product-card');
+    const step = card ? card.offsetWidth + 24 : track.clientWidth * 0.8;
+    track.scrollBy({ left: dir * step * 1.5, behavior: 'smooth' });
+}
+window.scrollProducts = scrollProducts;
 
+/* Enable / disable arrow buttons based on scroll position */
+function updateCarouselArrows() {
+    const track = document.getElementById('homeProducts');
+    if (!track) return;
+    const prev = document.querySelector('.carousel-prev');
+    const next = document.querySelector('.carousel-next');
+    if (!prev || !next) return;
+    const atStart = track.scrollLeft <= 4;
+    const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+    prev.disabled = atStart;
+    next.disabled = atEnd;
+}
+
+/* Attach listeners once the home products render */
+document.addEventListener('DOMContentLoaded', () => {
+    const track = document.getElementById('homeProducts');
+    if (!track) return;
+    track.addEventListener('scroll', updateCarouselArrows, { passive: true });
+    window.addEventListener('resize', updateCarouselArrows);
+    // Initial state after render
+    setTimeout(updateCarouselArrows, 200);
+});
 function renderAllProducts() {
     const grid = document.getElementById('allProducts');
     if (!grid) return;
